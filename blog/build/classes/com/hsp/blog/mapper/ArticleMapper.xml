@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hsp.blog.mapper.ArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.hsp.blog.pojo.Article" >
+    <id column="article_id" property="articleId" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="post_time" property="postTime" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+    <result column="is_use" property="isUse" jdbcType="VARCHAR" />
+    <result column="view_number" property="viewNumber" jdbcType="INTEGER" />
+    <result column="article_type" property="articleType" jdbcType="VARCHAR" />
+  </resultMap>
+ <insert id="addArticle" parameterType="Article">
+ 	INSERT INTO article (
+ 		title,
+ 		content,
+ 		img_url,
+ 		author,
+ 		post_time,
+ 		create_time,
+ 		update_time,
+ 		is_use,
+ 		view_number,
+ 		article_type
+ 	)
+ 	VALUES(
+ 		#{title},
+ 		#{content},
+ 		#{imgUrl},
+ 		#{author},
+ 		#{postTime},
+ 		now(),
+ 		#{updateTime},
+ 		#{isUse},
+ 		0,
+ 		#{articleType}
+ 	)
+ </insert>
+ 
+ <select id="getArticleByParams" parameterType="com.hsp.core.HMap" resultMap="BaseResultMap">
+ 	SELECT * FROM article WHERE 1=1
+ 	<if test="articleId !=null">
+ 		AND article_id=#{articeId}
+ 	</if>
+ 	<if test="title !=null">
+ 		AND title=#{title}
+ 	</if>
+ 	<if test="content !=null">
+ 		AND content=#{content}
+ 	</if>
+ 	<if test="imgUrl !=null">
+ 		AND img_url=#{imgUrl}
+ 	</if>
+ 	<if test="author !=null">
+ 		AND author=#{author}
+ 	</if>
+ 	<if test="postTime !=null">
+ 		AND post_time=#{postTime}
+ 	</if>
+ 	<if test="createTime !=null">
+ 		AND create_time=#{createTime}
+ 	</if>
+ 	<if test="updateTime !=null">
+ 		AND update_time=#{updateTime}
+ 	</if>
+ 	<if test="isUse !=null">
+ 		AND is_use=#{isUse}
+ 	</if>
+ 	<if test="viewNumber !=null">
+ 		AND view_number=#{viewNumber}
+ 	</if>
+ 	<if test="articleType !=null">
+ 		AND article_type=#{articleType}
+ 	</if>
+ 	<if test="sort !=null and order != null">
+  		ORDER BY #{sort} #{order}
+  	</if>
+  	<if test="isPagination == true">
+  		LIMIT #{start},#{size}
+  	</if>
+ </select>
+  
+</mapper>
