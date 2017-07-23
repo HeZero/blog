@@ -11,11 +11,11 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.hsp.admin.pojo.User;
 import com.hsp.admin.service.IUserService;
-import com.hsp.admin.service.Impl.UserServiceImpl;
 import com.hsp.base.enums.UserStatus;
 /**
  * shiro身份信息realm
