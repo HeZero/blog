@@ -26,7 +26,7 @@ form input{
 	<div style="margin: 15px;">
 		<form>
 			<input type="text" class="layui-input search-w"  name="name" />
-			<input type="button"  class="layui-btn layui-btn-normal dis-l" value="搜索"/>
+			<input type="button" id="search" class="layui-btn layui-btn-normal dis-l" value="搜索"/>
 			<input type="button" id="add" class="search-f-r layui-btn layui-btn-normal " value="新增"/>
 		</form>
 		<table id="dataTable" class="site-table table-hover">

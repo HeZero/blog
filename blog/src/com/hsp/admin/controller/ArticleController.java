@@ -72,7 +72,7 @@ public class ArticleController extends BaseController {
 	 */
 	@RequestMapping(value = "/pagination", method = RequestMethod.POST)
 	public void selectArticleList(HttpServletRequest request, HttpServletResponse response) {
-		HMap params=new HMap();
+		HMap params=new HMap(request);
 		List<Article> articleList=articleService.getValueByParams(params);
 		params.put("list", articleList);
 		params.put("code", 0);

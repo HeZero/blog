@@ -3,3 +3,4 @@
 <script type="text/javascript" src="../../asserts/admin/plugins/layui/layui.js"></script>
  <!--jquery脚本  -->
 <script src="../../asserts/js/jquery.js"></script>
+<script src="../../asserts/admin/js/pagemethods.js"></script>
