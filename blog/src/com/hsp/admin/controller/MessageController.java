@@ -1,5 +1,7 @@
 package com.hsp.admin.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hsp.base.controller.BaseController;
+import com.hsp.blog.pojo.Message;
 import com.hsp.blog.service.IMessageService;
+import com.hsp.core.HMap;
 @Controller
 @RequestMapping(value="/admin/message")
 public class MessageController extends BaseController{
@@ -54,8 +58,14 @@ public class MessageController extends BaseController{
 	 * @param request
 	 * @param response
 	 */
-	@RequestMapping(value="/pagination",method=RequestMethod.GET)
+	@RequestMapping(value="/pagination",method=RequestMethod.POST)
 	public void getPaginationData(HttpServletRequest request,HttpServletResponse response){
-		
+		HMap params=new HMap(request);
+		List<Message> messageList=msgService.getValueByParams(params);
+		params.put("list", messageList);
+		params.put("code", 0);
+		params.put("count", "57");
+		params.put("msg", "");
+		writeJsonData(response, params);
 	}
 }

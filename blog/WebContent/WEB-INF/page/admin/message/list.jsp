@@ -33,9 +33,10 @@ form input{
 			<thead>
 				<tr>
 					<th><input type="checkbox" id="selected-all"></th>
-					<th>文章标题</th>
-					<th>文章内容</th>
-					<th>文章类别</th>
+					<th>消息名称</th>
+					<th>消息内容</th>
+					<th>消息类型</th>
+					<th>相关地址</th>
 					<th>创建时间</th>
 					<th>操作</th>
 				</tr>
@@ -66,7 +67,8 @@ form input{
 				<td><input type="checkbox"></td>
 				<td>{{ item.title }}</td>
 				<td>{{ item.content }}</td>
-				<td>{{ item.articleType }}</td>
+				<td>{{ item.messageType }}</td>
+				<td>{{ item.url }}</td>
 				<td>{{ item.createtime }}</td>
 				<td>
 					<a href="/detail-1" target="_blank" class="layui-btn layui-btn-normal layui-btn-mini">预览</a>
