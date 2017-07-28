@@ -10,6 +10,6 @@ public interface IMessageService extends BaseService<Message>{
 	 * 查询最新发布的4条消息
 	 * @return
 	 */
-	List<Message> getMessageNew();
-
+	List<Message> getMessageNew(int size);
+	
 }

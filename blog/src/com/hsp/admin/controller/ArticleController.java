@@ -87,10 +87,10 @@ public class ArticleController extends BaseController {
 	 * @param respone
 	 * @return
 	 */
-	@RequestMapping(value="/delete/${articleId}",method=RequestMethod.GET)
+	@RequestMapping(value="/delete/{articleId}",method=RequestMethod.GET)
 	public String delete(@PathVariable("articleId")String articleId,HttpServletRequest request,HttpServletResponse respone){
 		articleService.deleteValueById(articleId);
-		return "/admin/article/list";
+		return "redirect:/list";
 	}
 
 }

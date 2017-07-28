@@ -42,17 +42,6 @@ form input{
 			</thead>
 			<!--内容容器-->
 			<tbody id="con">
-				<tr>
-					<td><input type="checkbox"></td>
-					<td>Layui</td>
-					<td>Beginner</td>
-					<td>2016-11-16 11:50</td>
-					<td><a href="/detail-1" target="_blank"
-						class="layui-btn layui-btn-normal layui-btn-mini">预览</a> <a
-						href="/manage/article_edit_1" class="layui-btn layui-btn-mini">编辑</a>
-						<a href="javascript:;" data-id="1" data-opt="del"
-						class="layui-btn layui-btn-danger layui-btn-mini">删除</a></td>
-				</tr>
 			</tbody>
 		</table>
 		<!--分页容器-->
@@ -67,11 +56,11 @@ form input{
 				<td>{{ item.title }}</td>
 				<td>{{ item.content }}</td>
 				<td>{{ item.articleType }}</td>
-				<td>{{ item.createtime }}</td>
+				<td>{{ item.createTime }}</td>
 				<td>
-					<a href="/detail-1" target="_blank" class="layui-btn layui-btn-normal layui-btn-mini">预览</a>
-					<a href="/manage/article_edit_1" class="layui-btn layui-btn-mini">编辑</a>
-					<a href="javascript:;" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a>
+					<a href="/admin/article/detail/{{item.articleId}}" target="_blank" class="layui-btn layui-btn-normal layui-btn-mini">预览</a>
+					<a href="/admin/article/edit/{{item.articleId}}" class="layui-btn layui-btn-mini">编辑</a>
+					<a href="/admin/article/delete/{{item.articleId}};" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a>
 				</td>
 			</tr>
 			{{# }); }}

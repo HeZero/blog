@@ -13,6 +13,8 @@
     <result column="is_use" property="isUse" jdbcType="VARCHAR" />
     <result column="view_number" property="viewNumber" jdbcType="INTEGER" />
     <result column="article_type" property="articleType" jdbcType="VARCHAR" />
+    <result column="is_share" property="isShare" jdbcType="VARCHAR" />
+    <result column="hot_sort" property="hotSort" jdbcType="VARCHAR" />
   </resultMap>
  <insert id="addArticle" parameterType="Article">
  	INSERT INTO article (
@@ -25,7 +27,8 @@
  		update_time,
  		is_use,
  		view_number,
- 		article_type
+ 		article_type,
+ 		is_share
  	)
  	VALUES(
  		#{title},
@@ -37,7 +40,8 @@
  		#{updateTime},
  		#{isUse},
  		0,
- 		#{articleType}
+ 		#{articleType},
+ 		#{isShare}
  	)
  </insert>
  
@@ -76,6 +80,12 @@
  	<if test="articleType !=null">
  		AND article_type=#{articleType}
  	</if>
+ 	<if test="isShare !=null">
+ 		AND is_share=#{isShare}
+ 	</if>
+ 	<if test="hotSort !=null">
+ 		AND hot_sort=#{hotSort}
+ 	</if>
  	<if test="sort !=null and order != null">
   		ORDER BY #{sort} #{order}
   	</if>
@@ -84,4 +94,50 @@
   	</if>
  </select>
   
+  <update id="updateArticle" parameterType="Article">
+  	UPDATE article SET
+  		<trim suffix="" suffixOverrides=",">
+		 	<if test="title !=null">
+		 		 title=#{title},
+		 	</if>
+		 	<if test="content !=null">
+		 		 content=#{content},
+		 	</if>
+		 	<if test="imgUrl !=null">
+		 		img_url=#{imgUrl},
+		 	</if>
+		 	<if test="author !=null">
+		 		 author=#{author},
+		 	</if>
+		 	<if test="postTime !=null">
+		 		 post_time=#{postTime},
+		 	</if>
+		 	<if test="createTime !=null">
+		 		 create_time=#{createTime},
+		 	</if>
+		 	<if test="updateTime !=null">
+		 		 update_time=#{updateTime},
+		 	</if>
+		 	<if test="isUse !=null">
+		 		 is_use=#{isUse},
+		 	</if>
+		 	<if test="viewNumber !=null">
+		 		 view_number=#{viewNumber},
+		 	</if>
+		 	<if test="articleType !=null">
+		 		 article_type=#{articleType},
+		 	</if>
+		 	<if test="isShare !=null">
+		 		is_share=#{isShare},
+		 	</if>
+		 	<if test="hotSort !=null">
+		 		 hot_sort=#{hotSort},
+		 	</if>
+  		</trim>
+  		WHERE article_id=#{articleId}
+  </update>
+  
+  <delete id="deleteValueById" parameterType="String">
+  	DELETE FROM article WHERE article_id=#{articleId}
+  </delete>
 </mapper>

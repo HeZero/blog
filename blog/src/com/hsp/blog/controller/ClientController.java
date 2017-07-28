@@ -34,8 +34,10 @@ public class ClientController extends BaseController{
 	@RequestMapping(value={"index","/"},method=RequestMethod.GET)
 	public String toIndex(HttpServletResponse response,HttpServletRequest request) {
 		request.setAttribute("user", userService.getUserByUsername("hsp"));
-		request.setAttribute("msgList",msgService.getMessageNew());
-		request.setAttribute("articleList", articleService.getArticleNew());
+		request.setAttribute("msgList",msgService.getMessageNew(4));
+		request.setAttribute("articleList", articleService.getArticleNew(8));
+		request.setAttribute("hot", articleService.getArticleHot(8));
+		request.setAttribute("recent", articleService.getRecentShare(4));
 		return "index";
 	}
 	
@@ -47,8 +49,8 @@ public class ClientController extends BaseController{
 	 */
 	@RequestMapping(value="article",method=RequestMethod.GET)
 	public String toActicleDetail(HttpServletResponse response,HttpServletRequest request){
-		request.setAttribute("msgList",msgService.getMessageNew());
-		request.setAttribute("articleList", articleService.getArticleNew());
+		request.setAttribute("msgList",msgService.getMessageNew(4));
+		request.setAttribute("articleList", articleService.getArticleNew(8));
 		return "article";
 	}
 	
