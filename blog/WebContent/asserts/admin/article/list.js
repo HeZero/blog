@@ -7,6 +7,6 @@ getData(url,paramsMap);
 			window.location.href=add;
 		});
 		$("#search").click(function(){
-			getData(url,{author:'hsp',title:'测试文章1'});
+			getData(url,$("#form").serialize());
 		})
 	})

@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -67,5 +69,41 @@ public class MessageController extends BaseController{
 		params.put("count", "57");
 		params.put("msg", "");
 		writeJsonData(response, params);
+	}
+	/**
+	 * 跳转修改消息
+	 * @param messageId
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value="/edit/{messageId}",method=RequestMethod.GET)
+	public String toEdit(@PathVariable("messageId")String messageId,HttpServletRequest request,HttpServletResponse response){
+		request.setAttribute("msg", msgService.getValueById(messageId));
+		return "/admin/message/edit";
+	}
+	/**
+	 * 修改消息
+	 * @param msg
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value="/edit",method=RequestMethod.POST)
+	public String edit(@ModelAttribute("message")Message msg,HttpServletRequest request,HttpServletResponse response){
+		msgService.updateValueInfo(msg);
+		return "/admin/message/list";
+	}
+	/**
+	 * 删除消息
+	 * @param messageId
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value="/delete/{messageId}",method=RequestMethod.GET)
+	public String delete(@PathVariable("messageId") String messageId,HttpServletRequest request,HttpServletResponse response){
+		msgService.deleteValueById(messageId);
+		return "redirect:/list";
 	}
 }

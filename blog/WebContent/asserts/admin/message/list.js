@@ -5,5 +5,8 @@ var add = "/admin/message/add";
 $(document).ready(function() {
 	$("#add").click(function() {
 		window.location.href = add;
+	});
+	$("#search").click(function(){
+		getData(url,$("#form").serialize());
 	})
 })

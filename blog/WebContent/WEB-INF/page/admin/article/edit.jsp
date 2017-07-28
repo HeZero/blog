@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,27 +21,28 @@
 		  <a><cite>文章管理</cite></a>
 		</span> -->
 
-	<form class="layui-form" action="/admin/article/add" method="POST">
+	<form class="layui-form" action="/admin/article/edit" method="POST">
+				<input type="hidden" name="articleId" value="${article.articleId }">
 				<div class="layui-form-item">
 					<label class="layui-form-label">文章标题</label>
 					<div class="layui-input-block">
-						<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
+						<input type="text" name="title" value="${article.title }" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
 					</div>
 				</div>
 				
 				<div class="layui-form-item">
 					<label class="layui-form-label">文章分类</label>
 					<div class="layui-input-block">
-						<input type="checkbox" name="articleType" value="0" title="web前端">
-						<input type="checkbox" name="articleType" value="1" title="java" checked="">
-						<input type="checkbox" name="articleType" value="2" title="大数据">
+						<input type="checkbox" name="articleType" <c:if test="${article.articleType eq '0' }">checked</c:if> value="0" title="web前端">
+						<input type="checkbox" name="articleType" <c:if test="${article.articleType eq '1' }">checked</c:if>  value="1" title="java" >
+						<input type="checkbox" name="articleType" <c:if test="${article.articleType eq '2' }">checked</c:if>  value="2" title="大数据">
 					</div>
 				</div>
 				
 				<div class="layui-form-item layui-form-text">
 					<label class="layui-form-label">文章内容</label>
 					<div class="layui-input-block">
-						<textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
+						<textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor">${article.content }</textarea>
 					</div>
 				</div>
 				<div class="layui-form-item">

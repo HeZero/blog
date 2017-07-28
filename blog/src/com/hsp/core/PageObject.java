@@ -11,6 +11,8 @@ public class PageObject<T> {
 	private String count;
 	
 	private String msg;
+	
+	private HMap map=new HMap();
 
 	public String getCode() {
 		return code;
@@ -43,8 +45,17 @@ public class PageObject<T> {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
-	
-	
-	
 
+	public HMap getMap() {
+		this.map.put("list",this.getList());
+		this.map.put("code", this.getCode());
+		this.map.put("count", this.getCount());
+		this.map.put("msg", this.getMsg());
+		return map;
+	}
+
+	public void setMap(HMap map) {
+		this.map = map;
+	}
+	
 }

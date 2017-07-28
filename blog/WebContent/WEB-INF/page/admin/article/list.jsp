@@ -24,8 +24,9 @@ form input{
 </head>
 <body>
 	<div style="margin: 15px;">
-		<form>
-			<input type="text" class="layui-input search-w"  name="name" />
+		<form id="form">
+			<label class="layui-form-label">文章标题</label>
+			<input type="text" class="layui-input search-w"  name="title" />
 			<input type="button" id="search" class="layui-btn layui-btn-normal dis-l" value="搜索"/>
 			<input type="button" id="add" class="search-f-r layui-btn layui-btn-normal " value="新增"/>
 		</form>
@@ -58,7 +59,6 @@ form input{
 				<td>{{ item.articleType }}</td>
 				<td>{{ item.createTime }}</td>
 				<td>
-					<a href="/admin/article/detail/{{item.articleId}}" target="_blank" class="layui-btn layui-btn-normal layui-btn-mini">预览</a>
 					<a href="/admin/article/edit/{{item.articleId}}" class="layui-btn layui-btn-mini">编辑</a>
 					<a href="/admin/article/delete/{{item.articleId}};" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a>
 				</td>

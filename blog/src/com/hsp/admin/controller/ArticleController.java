@@ -16,6 +16,7 @@ import com.hsp.base.controller.BaseController;
 import com.hsp.blog.pojo.Article;
 import com.hsp.blog.service.IArticleService;
 import com.hsp.core.HMap;
+import com.hsp.core.PageObject;
 
 @Controller
 @RequestMapping(value = "/admin/article")
@@ -93,4 +94,29 @@ public class ArticleController extends BaseController {
 		return "redirect:/list";
 	}
 
+	/**
+	 * 跳转文章修改
+	 * @param articleId
+	 * @param request
+	 * @param respone
+	 * @return
+	 */
+	@RequestMapping(value="/edit/{articleId}",method=RequestMethod.GET)
+	public String toEdit(@PathVariable("articleId")String articleId,HttpServletRequest request,HttpServletResponse respone){
+		Article article=articleService.getValueById(articleId);
+		request.setAttribute("article", article);
+		return "/admin/article/edit";
+	}
+	/**
+	 * 修改文章
+	 * @param article
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value="/edit",method=RequestMethod.POST)
+	public String edit(@ModelAttribute("article")Article article,HttpServletRequest request,HttpServletResponse response){
+		articleService.updateValueInfo(article);
+		return "/admin/article/list";
+	}
 }

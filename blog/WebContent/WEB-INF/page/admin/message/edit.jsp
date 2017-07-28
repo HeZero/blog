@@ -20,24 +20,25 @@
 		  <a><cite>文章管理</cite></a>
 		</span> -->
 
-	<form class="layui-form" action="/admin/message/add" method="POST">
+	<form class="layui-form" action="/admin/message/edit" method="POST">
+				<input type="hidden" name="messageId" value="${msg.messageId }" />
 				<div class="layui-form-item">
 					<label class="layui-form-label">消息名称</label>
 					<div class="layui-input-block">
-						<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
+						<input type="text" value="${msg.title }" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
 					</div>
 				</div>
 				<div class="layui-form-item">
 					<label class="layui-form-label">链接地址</label>
 					<div class="layui-input-block">
-						<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入地址" class="layui-input article-w">
+						<input type="text" value="${msg.url }" name="url" lay-verify="title" autocomplete="off" placeholder="请输入地址" class="layui-input article-w">
 					</div>
 				</div>
 				
 				<div class="layui-form-item">
 					<label class="layui-form-label">样式设置</label>
 					<div class="layui-input-block">
-						<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
+						<input type="text" value="${msg.msgColor }" name="color" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
 					</div>
 				</div>
 
@@ -84,7 +85,7 @@
 				<div class="layui-form-item layui-form-text">
 					<label class="layui-form-label">消息内容</label>
 					<div class="layui-input-block">
-						<textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
+						<textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor">${msg.content }</textarea>
 					</div>
 				</div>
 				<div class="layui-form-item">
