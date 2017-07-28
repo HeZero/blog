@@ -1,9 +1,11 @@
 package com.hsp.admin.service;
 
+import java.util.List;
 import java.util.Set;
 
 import com.hsp.admin.pojo.User;
 import com.hsp.base.Interface.BaseService;
+import com.hsp.core.HMap;
 
 public interface IUserService extends BaseService<User> {
 	
@@ -37,5 +39,11 @@ public interface IUserService extends BaseService<User> {
 	 * @return
 	 */
 	Set<String> findPermissions(String username);
+	/**
+	 * 查询用户列表
+	 * @param params
+	 * @return
+	 */
+	List<User> getUserListByParams(HMap params);
 
 }

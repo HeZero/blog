@@ -88,4 +88,10 @@ public class UserServiceImpl implements IUserService {
 		return null;
 	}
 
+	@Override
+	public List<User> getUserListByParams(HMap params) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
