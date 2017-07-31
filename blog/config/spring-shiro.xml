@@ -74,8 +74,8 @@
         <property name="definitions">  
             <value>  
                 /asserts/** = anon  
-                /admin/login = anon  
-                /admin/**=authc
+                <!-- /admin/login = anon  
+                /admin/**=authc -->
             </value>  
         </property>  
     </bean>       

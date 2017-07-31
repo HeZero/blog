@@ -9,7 +9,7 @@
 </head>
 <style>
 .article-w{
-	width:200px;
+	width:300px;
 }
 </style>
 <body>
@@ -30,18 +30,18 @@
 				<div class="layui-form-item">
 					<label class="layui-form-label">链接地址</label>
 					<div class="layui-input-block">
-						<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入地址" class="layui-input article-w">
+						<input type="text" name="url"  autocomplete="off" placeholder="请输入地址" class="layui-input article-w">
 					</div>
 				</div>
 				
 				<div class="layui-form-item">
 					<label class="layui-form-label">样式设置</label>
 					<div class="layui-input-block">
-						<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
+						<input type="text" name="color" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
 					</div>
 				</div>
 
-				<div class="layui-form-item">
+				<!-- <div class="layui-form-item">
 					<label class="layui-form-label">消息类别</label>
 					<div class="layui-input-block article-w">
 						<select name="interest" lay-filter="aihao">
@@ -53,7 +53,7 @@
 							<option value="4">旅行</option>
 						</select>
 					</div>
-				</div>
+				</div> -->
 
 				<!-- <div class="layui-form-item">
 					<label class="layui-form-label">文章类别</label>
@@ -75,9 +75,9 @@
 				<div class="layui-form-item">
 					<label class="layui-form-label">消息分类</label>
 					<div class="layui-input-block">
-						<input type="checkbox" name="articleType" value="0" title="系统消息">
-						<input type="checkbox" name="articleType" value="1" title="普通消息" checked="">
-						<input type="checkbox" name="articleType" value="2" title="前台消息">
+						<input type="checkbox" name="messageType" value="0" title="系统消息">
+						<input type="checkbox" name="messageType" value="1" title="普通消息">
+						<input type="checkbox" name="messageType" value="2" title="前台消息">
 					</div>
 				</div>
 				

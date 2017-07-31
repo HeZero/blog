@@ -47,6 +47,7 @@ public class MessageServiceImpl implements IMessageService{
 
 	@Override
 	public void addValueInfo(Message t) {
+		t.setIsUse("1");
 		mapper.addMessage(t);
 	}
 

@@ -51,8 +51,9 @@ public class MessageController extends BaseController{
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping(value="/add/post",method=RequestMethod.POST)
-	public String add(HttpServletRequest request,HttpServletResponse response){
+	@RequestMapping(value="/add",method=RequestMethod.POST)
+	public String add(HttpServletRequest request,HttpServletResponse response,@ModelAttribute("msg")Message msg){
+		msgService.addValueInfo(msg);
 		return "admin/message/list";
 	}
 	/**

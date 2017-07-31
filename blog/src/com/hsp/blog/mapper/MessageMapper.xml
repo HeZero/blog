@@ -8,7 +8,7 @@
 		<result column="title" property="title" jdbcType="VARCHAR" />
 		<result column="content" property="content" jdbcType="VARCHAR" />
 		<result column="url" property="url" jdbcType="VARCHAR" />
-		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
 		<result column="user_id" property="userId" jdbcType="INTEGER" />
 		<result column="msg_color" property="msgColor" jdbcType="VARCHAR" />
 	</resultMap>
@@ -30,7 +30,7 @@
 		#{title},
 		#{content},
 		#{url},
-		#{createTime},
+		now(),
 		#{userId},
 		#{msgColor}
 		)
