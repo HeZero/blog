@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hsp.admin.mapper.AuthcMapper" >
+  <resultMap id="Authc" type="com.hsp.admin.pojo.Authc" >
+    <id column="authc_id" property="authcId" jdbcType="INTEGER" />
+    <result column="chain" property="chain" jdbcType="VARCHAR" />
+    <result column="defenition" property="defenition" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="getAuthcList" resultMap="Authc">
+  	SELECT * FROM authc
+  </select>
+</mapper>
