@@ -22,6 +22,10 @@ public class Article {
     private Integer viewNumber;
 
     private String articleType;
+    
+    private String hotSort;
+    
+    private String isShare;
 
     public Integer getArticleId() {
         return articleId;
@@ -110,4 +114,20 @@ public class Article {
     public void setArticleType(String articleType) {
         this.articleType = articleType == null ? null : articleType.trim();
     }
+
+	public String getHotSort() {
+		return hotSort;
+	}
+
+	public void setHotSort(String hotSort) {
+		this.hotSort = hotSort;
+	}
+
+	public String getIsShare() {
+		return isShare;
+	}
+
+	public void setIsShare(String isShare) {
+		this.isShare = isShare;
+	}
 }

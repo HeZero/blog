@@ -19,11 +19,11 @@ public class AuthcManager implements IAuthcManager{
 	@Override
 	public HashMap<String, String> getAuthcConfig() {
 		List<Authc> list=mapper.getAuthcList();
-		HashMap<String,String> map=new HashMap<String,String>();
+		HashMap<String,String> map=new HashMap<>();
 		if(list!=null&&list.size()>0){
-		  for(Authc chain:list){
-			  map.put(chain.getChain(), chain.getDefenition());
-		  }
+			for(Authc authc:list){
+				map.put(authc.getChain(),authc.getDefenition());
+			}
 		}
 		return map;
 	}

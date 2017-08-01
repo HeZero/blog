@@ -72,7 +72,7 @@ public class ArticleController extends BaseController {
 	 */
 	@RequestMapping(value = "/pagination", method = RequestMethod.POST)
 	public void selectArticleList(HttpServletRequest request, HttpServletResponse response) {
-		HMap params=new HMap();
+		HMap params=new HMap(request);
 		List<Article> articleList=articleService.getValueByParams(params);
 		params.put("list", articleList);
 		params.put("code", 0);
@@ -87,10 +87,35 @@ public class ArticleController extends BaseController {
 	 * @param respone
 	 * @return
 	 */
-	@RequestMapping(value="/delete/${articleId}",method=RequestMethod.GET)
+	@RequestMapping(value="/delete/{articleId}",method=RequestMethod.GET)
 	public String delete(@PathVariable("articleId")String articleId,HttpServletRequest request,HttpServletResponse respone){
 		articleService.deleteValueById(articleId);
-		return "/admin/article/list";
+		return "redirect:/list";
 	}
 
+	/**
+	 * 跳转文章修改
+	 * @param articleId
+	 * @param request
+	 * @param respone
+	 * @return
+	 */
+	@RequestMapping(value="/edit/{articleId}",method=RequestMethod.GET)
+	public String toEdit(@PathVariable("articleId")String articleId,HttpServletRequest request,HttpServletResponse respone){
+		Article article=articleService.getValueById(articleId);
+		request.setAttribute("article", article);
+		return "/admin/article/edit";
+	}
+	/**
+	 * 修改文章
+	 * @param article
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value="/edit",method=RequestMethod.POST)
+	public String edit(@ModelAttribute("article")Article article,HttpServletRequest request,HttpServletResponse response){
+		articleService.updateValueInfo(article);
+		return "/admin/article/list";
+	}
 }

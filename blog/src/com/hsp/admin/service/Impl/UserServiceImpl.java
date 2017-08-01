@@ -1,6 +1,7 @@
 package com.hsp.admin.service.Impl;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,6 +62,36 @@ public class UserServiceImpl implements IUserService {
 		}else{
 			return null;
 		}
+	}
+
+	@Override
+	public void bindRoles(String userId, String roleIds) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void unbindRoles(String userId, String roleIds) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Set<String> findRoles(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<String> findPermissions(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> getUserListByParams(HMap params) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

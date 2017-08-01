@@ -47,6 +47,7 @@ public class MessageServiceImpl implements IMessageService{
 
 	@Override
 	public void addValueInfo(Message t) {
+		t.setIsUse("1");
 		mapper.addMessage(t);
 	}
 
@@ -56,13 +57,13 @@ public class MessageServiceImpl implements IMessageService{
 	}
 
 	@Override
-	public List<Message> getMessageNew() {
+	public List<Message> getMessageNew(int size) {
 		HMap params=new HMap();
 		params.put("sort", "createTime");
 		params.put("order", "ASC");
 		params.put("isPagination", true);
 		params.put("start", 0);
-		params.put("size", 4);
+		params.put("size", size);
 		return mapper.getMessageListByParams(params);
 	}
 	

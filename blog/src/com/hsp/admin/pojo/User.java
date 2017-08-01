@@ -25,6 +25,8 @@ public class User {
 	private String headImgurl;
 	
 	private String introduction;
+	
+	private String islock;
 
 	public String getUserId() {
 		return userId;
@@ -120,6 +122,14 @@ public class User {
 
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
+	}
+
+	public String getIslock() {
+		return islock;
+	}
+
+	public void setIslock(String islock) {
+		this.islock = islock;
 	}
 	
 	

@@ -15,7 +15,7 @@ public class Message {
 
     private String url;
 
-    private Date createTime;
+    private String createTime;
 
     private Integer userId;
     
@@ -69,15 +69,15 @@ public class Message {
         this.url = url == null ? null : url.trim();
     }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+    public String getCreateTime() {
+		return createTime;
+	}
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
 
-    public Integer getUserId() {
+	public Integer getUserId() {
         return userId;
     }
 

@@ -27,44 +27,13 @@
 						<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
 					</div>
 				</div>
-
-				<div class="layui-form-item">
-					<label class="layui-form-label">文章类别</label>
-					<div class="layui-input-block article-w">
-						<select name="interest" lay-filter="aihao">
-							<option value=""></option>
-							<option value="0">写作</option>
-							<option value="1" selected="">阅读</option>
-							<option value="2">游戏</option>
-							<option value="3">音乐</option>
-							<option value="4">旅行</option>
-						</select>
-					</div>
-				</div>
-
-				<!-- <div class="layui-form-item">
-					<label class="layui-form-label">文章类别</label>
-					<div class="layui-input-inline article-w">
-						<select name="quiz">
-							<option value="">请选择问题</option>
-							<optgroup label="城市记忆">
-								<option value="你工作的第一个城市">你工作的第一个城市</option>
-							</optgroup>
-							<optgroup label="学生时代">
-								<option value="你的工号">你的工号</option>
-								<option value="你最喜欢的老师">你最喜欢的老师</option>
-							</optgroup>
-						</select>
-					</div>
-				</div> -->
-
-
+				
 				<div class="layui-form-item">
 					<label class="layui-form-label">文章分类</label>
 					<div class="layui-input-block">
-						<input type="checkbox" name="articleType" value="0" title="写作">
-						<input type="checkbox" name="articleType" value="1" title="阅读" checked="">
-						<input type="checkbox" name="articleType" value="2" title="游戏">
+						<input type="checkbox" name="articleType" value="0" title="web前端">
+						<input type="checkbox" name="articleType" value="1" title="java" checked="">
+						<input type="checkbox" name="articleType" value="2" title="大数据">
 					</div>
 				</div>
 				

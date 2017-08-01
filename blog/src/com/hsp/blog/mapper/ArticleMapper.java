@@ -30,4 +30,10 @@ public interface ArticleMapper {
     */
    int getArticleCountByParams(HMap params);
    
+   /**
+    * 通过id删除文章
+    * @param articleId
+    */
+   void deleteValueById(String articleId);
+   
 }
