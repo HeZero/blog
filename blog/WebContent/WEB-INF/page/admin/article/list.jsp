@@ -6,26 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>文章管理</title>
 <%@include file="../common/BaseStyle.jsp"%>
-<style type="text/css">
-form input{
-	float:left;
-	margin-bottom:10px;
-}
-.search-f-r{
-	float:right;
-}
-.search-w{
-	width:200px;
-}
-.dis-l{
-	margin-left:10px;
-}
-</style>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/asserts/admin/css/list.css">
 </head>
 <body>
 	<div style="margin: 15px;">
 		<form id="form">
-			<label class="layui-form-label">文章标题</label>
+			<label class="layui-form-label search-form">文章标题</label>
 			<input type="text" class="layui-input search-w"  name="title" />
 			<input type="button" id="search" class="layui-btn layui-btn-normal dis-l" value="搜索"/>
 			<input type="button" id="add" class="search-f-r layui-btn layui-btn-normal " value="新增"/>
@@ -67,5 +53,5 @@ form input{
 	</script>
 </body>
 <%@include file="../common/BaseScript.jsp"%>
-<script src="../../asserts/admin/article/list.js"></script>
+<script src="<%=request.getContextPath() %>/asserts/admin/article/list.js"></script>
 </html>

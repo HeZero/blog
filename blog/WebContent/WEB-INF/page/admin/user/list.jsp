@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>消息管理</title>
+<title>用户管理</title>
 <%@include file="../common/BaseStyle.jsp"%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/asserts/admin/css/list.css">
 </head>
 <body>
 	<div style="margin: 15px;">
 		<form id="form">
-			<label class="layui-form-label search-form">消息名称</label>
-			<input type="text" class="layui-input search-w"  name="title" />
+			<label class="layui-form-label search-form">用户名</label>
+			<input type="text" class="layui-input search-w"  name="username" />
 			<input type="button" id="search" class="layui-btn layui-btn-normal dis-l" value="搜索"/>
 			<input type="button" id="add" class="search-f-r layui-btn layui-btn-normal " value="新增"/>
 		</form>
@@ -20,11 +20,11 @@
 			<thead>
 				<tr>
 					<th><input type="checkbox" id="selected-all"></th>
-					<th>消息名称</th>
-					<th>消息内容</th>
-					<th>消息类型</th>
-					<th>相关地址</th>
+					<th>用户名</th>
+					<th>身份证号</th>
 					<th>创建时间</th>
+					<th>状态</th>
+					<th>最后登录时间</th>
 					<th>操作</th>
 				</tr>
 			</thead>
@@ -41,11 +41,11 @@
 			{{# layui.each(d.list, function(index, item){ }}
 			<tr>
 				<td><input type="checkbox"></td>
-				<td>{{ item.title }}</td>
-				<td>{{ item.content }}</td>
-				<td>{{ item.messageType }}</td>
-				<td>{{ item.url }}</td>
+				<td>{{ item.username }}</td>
+				<td>{{ item.cardNumber }}</td>
 				<td>{{ item.createTime }}</td>
+				<td>{{ item.status }}</td>
+				<td>{{ item.lastLoginTime }}</td>
 				<td>
 					<a href="/admin/message/edit/{{item.messageId}}" class="layui-btn layui-btn-mini">编辑</a>
 					<a href="/admin/message/delete/{{item.messageId}}" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a>
@@ -55,5 +55,5 @@
 	</script>
 </body>
 <%@include file="../common/BaseScript.jsp"%>
-<script src="<%=request.getContextPath() %>/asserts/admin/message/list.js"></script>
+<script src="<%=request.getContextPath() %>/asserts/admin/user/list.js"></script>
 </html>

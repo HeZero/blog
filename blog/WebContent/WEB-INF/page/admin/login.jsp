@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%String contextPath=request.getContextPath(); %>
 <!DOCTYPE html>
 
 <html>
@@ -51,7 +50,7 @@
 				<p>Beginner © www.mistory.com</p>
 			</footer>
 		</div>
-		<script src="<%=contextPath %>/asserts/js/jquery.js"></script>
+		<script src="<%=request.getContextPath() %>/asserts/js/jquery.js"></script>
 		<script>
 			   layui.use(['layer', 'form'], function() {
 				var layer = layui.layer,

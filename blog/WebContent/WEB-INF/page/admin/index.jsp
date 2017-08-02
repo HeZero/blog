@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%String contextPath=request.getContextPath(); %>    
 <!DOCTYPE html>
 
 <html>
@@ -61,7 +60,7 @@
 			<!--layui文件  -->
 			<jsp:include page="common/BaseScript.jsp"></jsp:include>
 			<script type="text/javascript" src="../asserts/admin/datas/nav.js"></script>
-			<script src="<%=contextPath %>/asserts/admin/js/index.js"></script>
+			<script src="<%=request.getContextPath() %>/asserts/admin/js/index.js"></script>
 			<script>
 				layui.use('layer', function() {
 					var $ = layui.jquery,

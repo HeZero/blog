@@ -26,7 +26,7 @@ public class User {
 	
 	private String introduction;
 	
-	private String islock;
+	private String status;
 
 	public String getUserId() {
 		return userId;
@@ -124,13 +124,14 @@ public class User {
 		this.introduction = introduction;
 	}
 
-	public String getIslock() {
-		return islock;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setIslock(String islock) {
-		this.islock = islock;
+	public void setStatus(String status) {
+		this.status = status;
 	}
+
 	
 	
 }
