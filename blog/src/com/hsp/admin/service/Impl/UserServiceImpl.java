@@ -1,5 +1,6 @@
 package com.hsp.admin.service.Impl;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,6 +12,7 @@ import com.hsp.admin.mapper.RoleMapper;
 import com.hsp.admin.mapper.UserMapper;
 import com.hsp.admin.pojo.Role;
 import com.hsp.admin.pojo.User;
+import com.hsp.admin.pojo.UserRoleLink;
 import com.hsp.admin.service.IUserService;
 import com.hsp.core.HMap;
 
@@ -72,8 +74,17 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public void bindRoles(String userId, String roleIds) {
-		// TODO Auto-generated method stub
-		
+		if(roleIds!=null){
+			List<UserRoleLink> list=new ArrayList<>();
+			String[] Ids=roleIds.split(",");
+			for(int i=0;i<Ids.length;i++){
+				UserRoleLink link=new UserRoleLink();
+				link.setUserId(userId);
+				link.setRoleId(Ids[i]);
+				list.add(link);
+			}
+			roleMapper.bindRoles(list);
+		}
 	}
 
 	@Override
