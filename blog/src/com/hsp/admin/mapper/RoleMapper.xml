@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hsp.admin.mapper.RoleMapper" >
+  <resultMap id="Role" type="com.hsp.admin.pojo.Role" >
+    <id column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="getRoleListByParams" parameterType="com.hsp.core.HMap" resultMap="Role">
+  	SELECT * FROM role WHERE 1=1
+  	<if test="roleId != null">
+  		AND role_id=#{roleId}
+  	</if>
+  	<if test="roleName != null">
+  		AND role_name=#{roleName}
+  	</if>
+  	<if test="description != null">
+  		AND description=#{description}
+  	</if>
+  	<if test="createTime != null">
+  		AND create_time=#{createTime}
+  	</if>
+  </select>
+  
+  <select id="getRoleListByUsername" parameterType="String" resultMap="Role">
+  	SELECT * FROM role 
+  	WHERE role_id IN 
+  	(SELECT role_id FROM user_role WHERE user_id IN
+  	(SELECT user_id FROM `user` WHERE username=#{username}) )
+  </select>
+</mapper>
