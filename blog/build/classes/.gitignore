@@ -1,1 +1,8 @@
 /com/
+/db.properties
+/mybatis-config.xml
+/shiro.ini
+/spring-context.xml
+/spring-mvc.xml
+/spring-mybatis.xml
+/spring-shiro.xml

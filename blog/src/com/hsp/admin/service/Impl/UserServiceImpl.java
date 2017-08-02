@@ -1,18 +1,24 @@
 package com.hsp.admin.service.Impl;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hsp.admin.mapper.RoleMapper;
 import com.hsp.admin.mapper.UserMapper;
+import com.hsp.admin.pojo.Role;
 import com.hsp.admin.pojo.User;
 import com.hsp.admin.service.IUserService;
 import com.hsp.core.HMap;
 
 @Service("userServiceImpl")
 public class UserServiceImpl implements IUserService {
+	
+	@Autowired
+	RoleMapper roleMapper;
 	
 	@Autowired
 	UserMapper userMapper;
@@ -78,8 +84,14 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public Set<String> findRoles(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Role> roleList=roleMapper.getRoleListByUsername(username);
+		Set<String> set=new HashSet<>();
+		if(roleList!=null&&roleList.size()>0){
+			for(Role r:roleList){
+				set.add(r.getRoleName());
+			}
+		}
+		return set;
 	}
 
 	@Override

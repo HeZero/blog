@@ -34,6 +34,9 @@
        <!--  <property name="rememberMeManager" ref="rememberMeManager"/> -->
     </bean>  
     
+    <!--Shiro生命周期处理器-->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+	
     <!-- Session Manager -->
 	<!-- <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
 		相隔多久检查一次session的有效性  
