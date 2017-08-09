@@ -95,8 +95,8 @@
 function getNavs(){
 	var menu="";
 	$.ajax({
-		url:'/menu/get',
-		type:'GET',
+		url:'/admin/article/pagination',
+		type:'POST',
 		dataType:'json',
 		async:'false',		
 		success:function(data){

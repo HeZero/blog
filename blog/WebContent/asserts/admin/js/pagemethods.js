@@ -11,7 +11,7 @@ function getData(url,paramsMap){
 			tempElem : '#conTemp', //模块容器
 			pageConfig : { //分页参数配置
 				elem : '#paged', //分页容器
-				pageSize : 3
+				pageSize : 5
 				//分页大小
 			},
 			success : function() { //渲染成功的回调

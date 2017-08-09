@@ -33,7 +33,7 @@
 			</tbody>
 		</table>
 		<!--分页容器-->
-		<div id="paged"></div>
+		<div id="paged" style="text-align:center"></div>
 
 	</div>
 	<!--模板容器  -->

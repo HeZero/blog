@@ -1,16 +1,17 @@
 package com.hsp.base.controller;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.poi.ss.formula.functions.T;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hsp.base.utils.FastJsonUtils;
+import com.hsp.core.HMap;
 
 @Controller
 public class BaseController {
@@ -44,5 +45,19 @@ public class BaseController {
         excel.write(response.getOutputStream());
         response.getOutputStream().flush();
         response.getOutputStream().close();
+	}
+	/**
+	 * 分页数据获取方法
+	 * @param list
+	 * @param count
+	 * @return
+	 */
+	protected Map<String,String> getPagination(List list,int count){
+		HMap map=new HMap();
+		map.put("list", list);
+		map.put("code", 0);
+		map.put("count",count);
+		map.put("msg", "");
+		return map;
 	}
 }

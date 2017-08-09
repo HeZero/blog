@@ -3,6 +3,7 @@ package com.hsp.base.Interface;
 import java.util.List;
 
 import com.hsp.core.HMap;
+import com.hsp.core.PageHelper;
 /**
  * 通用接口
  * @author hsp
@@ -45,7 +46,9 @@ public interface BaseService<T> {
 	 * @param id
 	 */
 	void deleteValueById(String id);
-	
-	
-
+	/**
+	 * 分页查询	
+	 * @param page
+	 */
+	void selectValueInfoPagination(PageHelper page);
 }

@@ -15,6 +15,7 @@ import com.hsp.admin.pojo.User;
 import com.hsp.admin.pojo.UserRoleLink;
 import com.hsp.admin.service.IUserService;
 import com.hsp.core.HMap;
+import com.hsp.core.PageHelper;
 
 @Service("userServiceImpl")
 public class UserServiceImpl implements IUserService {
@@ -115,6 +116,12 @@ public class UserServiceImpl implements IUserService {
 	public List<User> getUserListByParams(HMap params) {
 		
 		return userMapper.getUserListByParams(params);
+	}
+
+	@Override
+	public void selectValueInfoPagination(PageHelper page) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

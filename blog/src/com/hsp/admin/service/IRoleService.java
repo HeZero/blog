@@ -1,6 +1,7 @@
 package com.hsp.admin.service;
 
 import com.hsp.admin.pojo.Role;
+import com.hsp.core.PageHelper;
 
 /**
  * 角色绑定接口
@@ -31,4 +32,9 @@ public interface IRoleService {
 	  * @param premissionIds
 	  */
 	 void unbindPermissions(String roleId,String premissionIds);
+	 /**
+	  * 分页查询角色数据
+	  * @param page
+	  */
+	 void selectRoleListPagination(PageHelper<Role> page);
 }

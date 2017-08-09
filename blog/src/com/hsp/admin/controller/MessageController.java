@@ -15,6 +15,7 @@ import com.hsp.base.controller.BaseController;
 import com.hsp.blog.pojo.Message;
 import com.hsp.blog.service.IMessageService;
 import com.hsp.core.HMap;
+import com.hsp.core.PageHelper;
 @Controller
 @RequestMapping(value="/admin/message")
 public class MessageController extends BaseController{
@@ -62,13 +63,9 @@ public class MessageController extends BaseController{
 	 */
 	@RequestMapping(value="/pagination",method=RequestMethod.POST)
 	public void getPaginationData(HttpServletRequest request,HttpServletResponse response){
-		HMap params=new HMap(request);
-		List<Message> messageList=msgService.getValueByParams(params);
-		params.put("list", messageList);
-		params.put("code", 0);
-		params.put("count", "57");
-		params.put("msg", "");
-		writeJsonData(response, params);
+		PageHelper<Message> page=new PageHelper<>(request);
+		msgService.selectValueInfoPagination(page);
+		writeJsonData(response, page.getMapData());
 	}
 	/**
 	 * 跳转修改消息

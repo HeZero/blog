@@ -13,6 +13,7 @@ public class SimpleFilterChainDefinitionsService extends AbstractFilterChainDefi
 	
 	 @Override  
 	    public Map<String, String> initOtherPermission() {   
-	        return authcManager.getAuthcConfig();  
+	        //return authcManager.getAuthcConfig();
+		 	return null;
 	    }  
 }

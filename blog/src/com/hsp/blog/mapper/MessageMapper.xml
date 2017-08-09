@@ -67,7 +67,36 @@
 			ORDER BY #{sort} #{order}
 		</if>
 		<if test="isPagination == true">
-			LIMIT #{start},#{size}
+			LIMIT #{pageIndex},#{pageSize}
+		</if>
+	</select>
+	
+	<select id="getMessageListCount" parameterType="com.hsp.core.HMap"
+		resultType="Integer">
+		SELECT COUNT(message_id) FROM message WHERE 1=1
+		<if test="messageId !=null">
+			AND message_id=#{messageId}
+		</if>
+		<if test="messageType !=null">
+			AND message_type=#{messageType}
+		</if>
+		<if test="isUse !=null">
+			AND is_use=#{isUse}
+		</if>
+		<if test="title !=null">
+			AND title=#{title}
+		</if>
+		<if test="content !=null">
+			AND content=#{content}
+		</if>
+		<if test="url !=null">
+			AND url=#{url}
+		</if>
+		<if test="createTime !=null">
+			AND create_time=#{createTime}
+		</if>
+		<if test="userId !=null">
+			AND user_id=#{userId}
 		</if>
 	</select>
 

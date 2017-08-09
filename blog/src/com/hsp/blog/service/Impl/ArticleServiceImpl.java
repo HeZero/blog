@@ -9,6 +9,7 @@ import com.hsp.blog.mapper.ArticleMapper;
 import com.hsp.blog.pojo.Article;
 import com.hsp.blog.service.IArticleService;
 import com.hsp.core.HMap;
+import com.hsp.core.PageHelper;
 
 @Service
 public class ArticleServiceImpl implements IArticleService{
@@ -68,8 +69,8 @@ public class ArticleServiceImpl implements IArticleService{
 		params.put("sort", "create_time");
 		params.put("order", "ASC");
 		params.put("isPagination", true);
-		params.put("start", 0);
-		params.put("size", size);
+		params.put("pageIndex", 0);
+		params.put("pageSize", size);
 		return mapper.getArticleByParams(params);
 	}
 
@@ -79,8 +80,8 @@ public class ArticleServiceImpl implements IArticleService{
 		params.put("sort", "hot_sort");
 		params.put("order", "ASC");
 		params.put("isPagination", true);
-		params.put("start", 0);
-		params.put("size", size);
+		params.put("pageIndex", 0);
+		params.put("pageSize", size);
 		return mapper.getArticleByParams(params);
 	}
 
@@ -90,8 +91,8 @@ public class ArticleServiceImpl implements IArticleService{
 		params.put("sort", field);
 		params.put("order", "ASC");
 		params.put("isPagination", true);
-		params.put("start", 0);
-		params.put("size", size);
+		params.put("pageIndex", 0);
+		params.put("pageSize", size);
 		return mapper.getArticleByParams(params);
 	}
 
@@ -102,9 +103,17 @@ public class ArticleServiceImpl implements IArticleService{
 		params.put("isShare", "1");
 		params.put("order", "ASC");
 		params.put("isPagination", true);
-		params.put("start", 0);
-		params.put("size", size);
+		params.put("pageIndex", 0);
+		params.put("pageSize", size);
 		return mapper.getArticleByParams(params);
+	}
+
+	@Override
+	public void selectValueInfoPagination(PageHelper page) {
+		page.getParams().put("isPagination", true);
+		page.generatePaginationParam();
+		page.setList(mapper.getArticleByParams(page.getParams()));
+		page.setConut(mapper.getArticleCountByParams(page.getParams()));
 	}
 
 }

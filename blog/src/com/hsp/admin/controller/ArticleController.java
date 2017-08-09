@@ -16,6 +16,7 @@ import com.hsp.base.controller.BaseController;
 import com.hsp.blog.pojo.Article;
 import com.hsp.blog.service.IArticleService;
 import com.hsp.core.HMap;
+import com.hsp.core.PageHelper;
 
 @Controller
 @RequestMapping(value = "/admin/article")
@@ -72,13 +73,9 @@ public class ArticleController extends BaseController {
 	 */
 	@RequestMapping(value = "/pagination", method = RequestMethod.POST)
 	public void selectArticleList(HttpServletRequest request, HttpServletResponse response) {
-		HMap params=new HMap(request);
-		List<Article> articleList=articleService.getValueByParams(params);
-		params.put("list", articleList);
-		params.put("code", 0);
-		params.put("count", "57");
-		params.put("msg", "");
-		writeJsonData(response, params);
+		PageHelper<Article> page=new PageHelper<>(request);
+		articleService.selectValueInfoPagination(page);
+		writeJsonData(response,page.getMapData());
 	}
 	/**
 	 * 删除文章

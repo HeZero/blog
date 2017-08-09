@@ -9,8 +9,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<title>烟雨楼后台登录</title>
-		<link rel="stylesheet" href="../asserts/admin/plugins/layui/css/layui.css" media="all" />
-		<link rel="stylesheet" href="../asserts/admin/css/login.css" />
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/asserts/admin/plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/asserts/admin/css/login.css" />
 	</head>
 
 	<body class="beg-login-bg">

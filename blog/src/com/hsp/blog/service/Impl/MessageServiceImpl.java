@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hsp.blog.mapper.MessageMapper;
+import com.hsp.blog.pojo.Article;
 import com.hsp.blog.pojo.Message;
 import com.hsp.blog.service.IMessageService;
 import com.hsp.core.HMap;
+import com.hsp.core.PageHelper;
 @Service
 public class MessageServiceImpl implements IMessageService{
 
@@ -62,9 +64,19 @@ public class MessageServiceImpl implements IMessageService{
 		params.put("sort", "createTime");
 		params.put("order", "ASC");
 		params.put("isPagination", true);
-		params.put("start", 0);
-		params.put("size", size);
+		params.put("pageIndex", 0);
+		params.put("pageSize", size);
 		return mapper.getMessageListByParams(params);
+	}
+
+	@Override
+	public void selectValueInfoPagination(PageHelper page) {
+		page.getParams().put("isPagination", true);
+		page.generatePaginationParam();
+		List<Message> list=mapper.getMessageListByParams(page.getParams());
+		int count=mapper.getMessageListCount(page.getParams());
+		page.setList(list);
+		page.setConut(count);		
 	}
 	
 	

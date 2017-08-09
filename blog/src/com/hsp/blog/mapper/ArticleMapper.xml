@@ -90,8 +90,51 @@
   		ORDER BY #{sort} #{order}
   	</if>
   	<if test="isPagination == true">
-  		LIMIT #{start},#{size}
+  		LIMIT #{pageIndex},#{pageSize}
   	</if>
+ </select>
+ 
+ <select id="getArticleCountByParams" parameterType="com.hsp.core.HMap" resultType="Integer">
+ 	SELECT COUNT(article_id) FROM article WHERE 1=1
+ 	<if test="articleId !=null">
+ 		AND article_id=#{articleId}
+ 	</if>
+ 	<if test="title !=null">
+ 		AND title=#{title}
+ 	</if>
+ 	<if test="content !=null">
+ 		AND content=#{content}
+ 	</if>
+ 	<if test="imgUrl !=null">
+ 		AND img_url=#{imgUrl}
+ 	</if>
+ 	<if test="author !=null">
+ 		AND author=#{author}
+ 	</if>
+ 	<if test="postTime !=null">
+ 		AND post_time=#{postTime}
+ 	</if>
+ 	<if test="createTime !=null">
+ 		AND create_time=#{createTime}
+ 	</if>
+ 	<if test="updateTime !=null">
+ 		AND update_time=#{updateTime}
+ 	</if>
+ 	<if test="isUse !=null">
+ 		AND is_use=#{isUse}
+ 	</if>
+ 	<if test="viewNumber !=null">
+ 		AND view_number=#{viewNumber}
+ 	</if>
+ 	<if test="articleType !=null">
+ 		AND article_type=#{articleType}
+ 	</if>
+ 	<if test="isShare !=null">
+ 		AND is_share=#{isShare}
+ 	</if>
+ 	<if test="hotSort !=null">
+ 		AND hot_sort=#{hotSort}
+ 	</if>
  </select>
   
   <update id="updateArticle" parameterType="Article">
