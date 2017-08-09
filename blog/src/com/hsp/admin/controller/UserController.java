@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hsp.admin.pojo.Role;
 import com.hsp.admin.pojo.User;
+import com.hsp.admin.service.IAuthcManager;
 import com.hsp.admin.service.IRoleService;
 import com.hsp.admin.service.IUserService;
 import com.hsp.base.controller.BaseController;
@@ -26,6 +27,9 @@ public class UserController extends BaseController{
 	
 	@Autowired
 	IRoleService roleService;
+	
+	@Autowired
+	IAuthcManager authcManager;
 	
 	/**
 	 * 跳转用户查询
@@ -82,11 +86,35 @@ public class UserController extends BaseController{
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping(value="/role/pagination",method=RequestMethod.GET)
+	@RequestMapping(value="/role/pagination",method=RequestMethod.POST)
 	@RequiresRoles("super")
 	public void rolePagination(HttpServletRequest request,HttpServletResponse response){
 		PageHelper<Role> page=new PageHelper<>(request);
 		roleService.selectRoleListPagination(page);
+		writeJsonData(response, page.getMapData());
+	}
+	
+	/**
+	 * 跳转平台开发权限列表
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value="/authc/list",method=RequestMethod.GET)
+	@RequiresRoles("super")
+	public String toAuthc(HttpServletRequest request,HttpServletResponse response){
+		return "admin/user/authc";
+	}
+	
+	/**
+	 * 获取权限数据
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value="/authc/pagination",method=RequestMethod.POST)
+	@RequiresRoles("super")
+	public void authcPagination(HttpServletRequest request,HttpServletResponse response){
+		PageHelper<Role> page=new PageHelper<>(request);
+		authcManager.selectValueInfoPagination(page);
 		writeJsonData(response, page.getMapData());
 	}
 	

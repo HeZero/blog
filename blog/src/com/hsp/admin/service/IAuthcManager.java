@@ -2,7 +2,10 @@ package com.hsp.admin.service;
 
 import java.util.HashMap;
 
-public interface IAuthcManager {
+import com.hsp.admin.pojo.Authc;
+import com.hsp.base.Interface.BaseService;
+
+public interface IAuthcManager extends BaseService<Authc>{
 
 	/**
 	 * 获取权限配置

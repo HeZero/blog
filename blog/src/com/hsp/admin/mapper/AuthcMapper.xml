@@ -8,7 +8,66 @@
     <result column="create_time" property="createTime" jdbcType="VARCHAR" />
   </resultMap>
   
+  <sql id="search">
+  	<if test="authcId != null">
+  		AND authc_id=#{authcId}
+  	</if>
+  	<if test="chain !=null">
+  		AND chain=#{chain}
+  	</if>
+  	<if test="defenition !=null">
+  		AND defenition=#{defenition}
+  	</if>
+  	<if test="createTime !=null">
+  		AND create_time=#{createTime}
+  	</if>
+  </sql>
+  <insert id="addAuthc" parameterType="Authc">
+  	INSERT INTO authc (
+  		chain,
+  		defenition,
+  		create_time
+  	)
+  	VALUES(
+  		#{chain},
+  		#{defenition},
+  		now()
+  	)
+  </insert>
+  
   <select id="getAuthcList" resultMap="Authc">
   	SELECT * FROM authc
   </select>
+  
+  <select id="getAuthcListByParams" parameterType="com.hsp.core.HMap" resultMap="Authc">
+  	SELECT * FROM authc WHERE 1=1
+  	<include refid="search"></include>
+  	<if test="sort !=null and order != null">
+  			ORDER BY #{sort} #{order}
+  	</if>
+  	<if test="isPagination == true">
+  			LIMIT #{pageIndex},#{pageSize}
+  	</if>
+  </select>
+  
+  <select id="getAuthcListCountByParams" parameterType="com.hsp.core.HMap" resultType="Integer">
+  		SELECT COUNT(authc_id) FROM authc WHERE 1=1
+  		<include refid="search"></include>
+  </select>
+  
+  <update id="updateAuthc" parameterType="Authc">
+  	UPDATE authc SET
+  	<trim suffix="," suffixOverrides=",">
+  		<if test="chain !=null">
+  			 chain=#{chain},
+  		</if>
+  		<if test="defenition !=null">
+  			 defenition=#{defenition},
+  		</if>
+  		<if test="createTime !=null">
+  			 create_time=#{createTime},
+  		</if>
+  	</trim>
+  	WHERE authc_id=#{authcId}
+  </update>
 </mapper>

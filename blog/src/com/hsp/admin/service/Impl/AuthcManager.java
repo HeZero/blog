@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.hsp.admin.mapper.AuthcMapper;
 import com.hsp.admin.pojo.Authc;
 import com.hsp.admin.service.IAuthcManager;
+import com.hsp.core.HMap;
+import com.hsp.core.PageHelper;
 
 @Service
 public class AuthcManager implements IAuthcManager{
@@ -26,6 +28,50 @@ public class AuthcManager implements IAuthcManager{
 			}
 		}
 		return map;
+	}
+
+	@Override
+	public List<Authc> getValueByParams(HMap params) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getValueCountByParams(HMap params) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Authc getValueById(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateValueInfo(Authc t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addValueInfo(Authc t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteValueById(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void selectValueInfoPagination(PageHelper page) {
+		page.generatePaginationParam();
+		page.setList(mapper.getAuthcListByParams(page.getParams()));
+		page.setConut(mapper.getAuthcListCountByParams(page.getParams()));
+		
 	}
 
 }

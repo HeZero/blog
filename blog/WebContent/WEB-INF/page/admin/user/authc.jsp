@@ -20,8 +20,8 @@
 			<thead>
 				<tr>
 					<th><input type="checkbox" id="selected-all"></th>
-					<th>角色</th>
-					<th>角色名</th>
+					<th>过滤链</th>
+					<th>访问设置</th>
 					<th>创建时间</th>
 					<th>操作</th>
 				</tr>
@@ -39,8 +39,8 @@
 			{{# layui.each(d.list, function(index, item){ }}
 			<tr>
 				<td><input type="checkbox"></td>
-				<td>{{ item.roleName }}</td>
-				<td>{{ item.description }}</td>
+				<td>{{ item.chain }}</td>
+				<td>{{ item.defenition }}</td>
 				<td>{{ item.createTime }}</td>
 				<td>
 					<a href="/admin/message/edit/{{item.messageId}}" class="layui-btn layui-btn-mini">编辑</a>
@@ -51,5 +51,5 @@
 	</script>
 </body>
 <%@include file="../common/BaseScript.jsp"%>
-<script src="<%=request.getContextPath() %>/asserts/admin/user/role_list.js"></script>
+<script src="<%=request.getContextPath() %>/asserts/admin/user/authc_list.js"></script>
 </html>

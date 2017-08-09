@@ -38,6 +38,28 @@
   	<if test="createTime != null">
   		AND create_time=#{createTime}
   	</if>
+  	<if test="sort !=null and order != null">
+  			ORDER BY #{sort} #{order}
+  	</if>
+  	<if test="isPagination == true">
+  			LIMIT #{pageIndex},#{pageSize}
+  	</if>
+  </select>
+  
+  <select id="getRoleListCountByParams" parameterType="com.hsp.core.HMap" resultType="Integer">
+  	SELECT COUNT(role_id) FROM role WHERE 1=1
+  	<if test="roleId != null">
+  		AND role_id=#{roleId}
+  	</if>
+  	<if test="roleName != null">
+  		AND role_name=#{roleName}
+  	</if>
+  	<if test="description != null">
+  		AND description=#{description}
+  	</if>
+  	<if test="createTime != null">
+  		AND create_time=#{createTime}
+  	</if>
   </select>
   
   <select id="getRoleListByUsername" parameterType="String" resultMap="Role">
