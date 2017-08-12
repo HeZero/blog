@@ -4,9 +4,13 @@ getData(url,paramsMap);
 var add = "/admin/message/add";
 $(document).ready(function() {
 	$("#add").click(function() {
-		window.location.href = add;
+		open('添加消息',add);
 	});
 	$("#search").click(function(){
 		getData(url,$("#form").serialize());
 	})
 })
+function edit(id){
+		var edit='/admin/message/edit/'+id;
+		open('编辑文章',edit);
+	}

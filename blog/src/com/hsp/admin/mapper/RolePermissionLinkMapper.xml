@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hsp.admin.mapper.RolePermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.hsp.admin.pojo.RolePermission" >
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <insert id="bindPermission" parameterType="RolePermissionLink">
+  	INSERT INTO role_permission(
+  		role_id,
+  		p_id
+  	)
+  	VALUES(
+  		#{roleId},
+  		#{pId}
+  	)
+  </insert>
+  
+  <delete id="unbindPermission" parameterType="RolePermissionLink">
+  	DELETE FROM role_permission WHERE role_id=#{roleId} AND p_id=#{pId}
+  </delete>
+</mapper>

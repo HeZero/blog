@@ -26,3 +26,12 @@ function getData(url,paramsMap){
 		});
 	});
 }
+function open(title,url){
+	layer.open({
+		type:2,
+		title:title,
+		maxmin: true,
+		content:[url,'no'],
+		area:['800px','600px']
+	})
+}

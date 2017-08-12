@@ -30,8 +30,8 @@
 				</div>
 				
 				<div class="layui-form-item">
-					<label class="layui-form-label">权限</label>
-					<div class="layui-input-inline">
+					<label class="layui-form-label">权限设置</label>
+					<div class="layui-input-block">
 						<ul class="ztree" id="demo"></ul>
 					</div>
 				</div>

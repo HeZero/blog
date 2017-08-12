@@ -117,6 +117,15 @@ public class UserController extends BaseController{
 		authcManager.selectValueInfoPagination(page);
 		writeJsonData(response, page.getMapData());
 	}
-	
+	/**
+	 * 获取角色权限组
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value="/permission/data",method=RequestMethod.POST)
+	@RequiresRoles("super")
+	public void getPermissionData(HttpServletRequest request,HttpServletResponse response){
+		
+	}
 	
 }

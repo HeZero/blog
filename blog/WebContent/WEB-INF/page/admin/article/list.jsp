@@ -45,7 +45,7 @@
 				<td>{{ item.articleType }}</td>
 				<td>{{ item.createTime }}</td>
 				<td>
-					<a href="/admin/article/edit/{{item.articleId}}" class="layui-btn layui-btn-mini">编辑</a>
+					<a href="javascript:;" onclick="edit({{item.articleId}})" class="layui-btn layui-btn-mini">编辑</a>
 					<a href="/admin/article/delete/{{item.articleId}};" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a>
 				</td>
 			</tr>

@@ -47,7 +47,7 @@
 				<td>{{ item.url }}</td>
 				<td>{{ item.createTime }}</td>
 				<td>
-					<a href="/admin/message/edit/{{item.messageId}}" class="layui-btn layui-btn-mini">编辑</a>
+					<a href="#" onclick="edit({{item.messageId}})" class="layui-btn layui-btn-mini">编辑</a>
 					<a href="/admin/message/delete/{{item.messageId}}" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a>
 				</td>
 			</tr>

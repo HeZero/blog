@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hsp.admin.mapper.PermissionMapper">
+	<resultMap id="BaseResultMap" type="com.hsp.admin.pojo.Permission">
+		<result column="p_id" property="pId" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="url" property="url" jdbcType="VARCHAR" />
+		<result column="action_type" property="actonType" jdbcType="VARCHAR" />
+		<result column="permission_type" property="permissionType"
+			jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<insert id="addPermission" parameterType="Permission">
+		INSERT INTO permission(
+		name,
+		url,
+		action_type,
+		permission_type,
+		create_time
+		)
+		VALUES(
+		#{name},
+		#{url},
+		#{actionType},
+		#{permissionType},
+		now()
+		)
+	</insert>
+
+	<sql id="search">
+		<if test="pId != null">
+			AND p_id=#{pId,jdbcType=VARCHAR}
+		</if>
+		<if test="name != null">
+			AND name=#{name,jdbcType=VARCHAR}
+		</if>
+		<if test="url != null">
+			AND url=#{url,jdbcType=VARCHAR}
+		</if>
+		<if test="actionType != null">
+			AND action_type=#{actionType,jdbcType=VARCHAR}
+		</if>
+		<if test="permissionType != null">
+			AND permission_type=#{permissionType,jdbcType=VARCHAR}
+		</if>
+		<if test="createTime != null">
+			AND create_time=#{createTime,jdbcType=VARCHAR}
+		</if>
+	</sql>
+
+	<select id="getPermissionList" parameterType="com.hsp.core.HMap"
+		resultMap="BaseResultMap">
+		SELECT * FROM permission WHERE 1=1
+		<include refid="search"></include>
+	</select>
+
+	<select id="getPermissionListCount" parameterType="com.hsp.core.HMap"
+		resultType="Integer">
+		SELECT COUNT(p_id) FROM permission WHERE 1=1
+		<include refid="search"></include>
+	</select>
+
+	<update id="updatePermission" parameterType="Permission">
+		UPDATE permission SET
+		<trim suffix="" suffixOverrides=",">
+			<if test="name != null">
+				name=#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="url != null">
+				url=#{url,jdbcType=VARCHAR},
+			</if>
+			<if test="actionType != null">
+				action_type=#{actionType,jdbcType=VARCHAR},
+			</if>
+			<if test="permissionType != null">
+				permission_type=#{permissionType,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time=#{createTime,jdbcType=VARCHAR},
+			</if>
+		</trim>
+		WHERE p_id=#{pId,jdbcType=VARCHAR}
+	</update>
+</mapper>

@@ -10,13 +10,14 @@ var setting = {
 		};
 
 		var zNodes =[
-			{ id:1, pId:0, name:" 超级管理员", open:true},
-			{ id:11, pId:1, name:"文章管理", open:true},
-			{ id:111, pId:1, name:"消息管理"},
-			{ id:112, pId:1, name:"系统设置"},
-			{ id:12, pId:1, name:"用户管理", open:true},
-			{ id:121, pId:1, name:"角色管理"},
-			{ id:122, pId:1, name:"权限管理"}
+			{ id:1, name:" 超级管理员", open:true,checked:true,children:[
+				{ id:11, name:"文章管理", open:true},
+				{ id:111, name:"消息管理"},
+				{ id:112, name:"系统设置"},
+				{ id:12, name:"用户管理", open:true},
+				{ id:121, name:"角色管理"},
+				{ id:122, name:"权限管理"}
+			]},	
 		];
 
 		var code;
