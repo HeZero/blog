@@ -5,7 +5,7 @@
 		<result column="p_id" property="pId" jdbcType="INTEGER" />
 		<result column="name" property="name" jdbcType="VARCHAR" />
 		<result column="url" property="url" jdbcType="VARCHAR" />
-		<result column="action_type" property="actonType" jdbcType="VARCHAR" />
+		<result column="action_type" property="actionType" jdbcType="VARCHAR" />
 		<result column="permission_type" property="permissionType"
 			jdbcType="VARCHAR" />
 		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
@@ -53,6 +53,16 @@
 		resultMap="BaseResultMap">
 		SELECT * FROM permission WHERE 1=1
 		<include refid="search"></include>
+	</select>
+	
+	<select id="getPermissionByRole" parameterType="String"
+		resultMap="BaseResultMap">
+		SELECT
+			p.*
+		FROM
+			permission p
+		LEFT JOIN role_permission rp ON rp.p_id = p.p_id
+		WHERE role_id=#{roleId}
 	</select>
 
 	<select id="getPermissionListCount" parameterType="com.hsp.core.HMap"

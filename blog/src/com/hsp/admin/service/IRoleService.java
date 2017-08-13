@@ -1,7 +1,10 @@
 package com.hsp.admin.service;
 
+import java.util.List;
+
 import com.hsp.admin.pojo.Role;
 import com.hsp.core.PageHelper;
+import com.hsp.core.ZtreeNode;
 
 /**
  * 角色绑定接口
@@ -37,4 +40,9 @@ public interface IRoleService {
 	  * @param page
 	  */
 	 void selectRoleListPagination(PageHelper<Role> page);
+	 /**
+	  * 获得角色权限组
+	  * @return
+	  */
+	 List<ZtreeNode> getRolePermissionGroup();
 }

@@ -36,4 +36,5 @@ public interface RoleMapper {
 	 * @return
 	 */
 	int getRoleListCountByParams(HMap params);
+	
 }

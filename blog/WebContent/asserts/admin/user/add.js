@@ -9,7 +9,7 @@ var setting = {
 			}
 		};
 
-		var zNodes =[
+		/*var zNodes =[
 			{ id:1, name:" 超级管理员", open:true,checked:true,children:[
 				{ id:11, name:"文章管理", open:true},
 				{ id:111, name:"消息管理"},
@@ -18,8 +18,17 @@ var setting = {
 				{ id:121, name:"角色管理"},
 				{ id:122, name:"权限管理"}
 			]},	
-		];
-
+			{ roleId:1, name:" 超级管理员", open:true,checked:true,children:[
+				{ roleId:11, name:"文章管理", open:true},
+				{ roleId:111, name:"消息管理"},
+				{ roleId:112, name:"系统设置"},
+				{ roleId:12, name:"用户管理", open:true},
+				{ roleId:121, name:"角色管理"},
+				{ roleId:122, name:"权限管理"}
+				]},	
+		];*/
+		var zNodes=getNodeData("/admin/permission/data");
+		
 		var code;
 
 		function setCheck() {

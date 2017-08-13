@@ -15,7 +15,7 @@ public class ZtreeNode {
 	
 	public String name;
 	
-	public boolean open;
+	public boolean open=true;
 	
 	public boolean checked;
 

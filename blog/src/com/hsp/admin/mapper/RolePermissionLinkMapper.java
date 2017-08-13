@@ -9,4 +9,5 @@ public interface RolePermissionLinkMapper {
 	void bindPermissions(List<RolePermissionLink> link);
 	
 	void unbindPermissions(List<RolePermissionLink> link);
+	
 }

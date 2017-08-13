@@ -35,3 +35,16 @@ function open(title,url){
 		area:['800px','600px']
 	})
 }
+function getNodeData(url){
+	var zNodes=null;
+	$.ajax({
+		url:url,
+		type:'POST',
+		async:false,
+		dataType:'json',
+		success:function(data){
+			zNodes=data;
+		}
+	})
+	return zNodes;
+}

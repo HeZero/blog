@@ -18,4 +18,5 @@ public interface PermissionMapper {
 	
 	int getPermissionListCount(HMap params);
 
+	List<Permission> getPermissionByRole(String roleId);
 }

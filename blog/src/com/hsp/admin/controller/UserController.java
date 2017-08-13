@@ -18,6 +18,7 @@ import com.hsp.admin.service.IRoleService;
 import com.hsp.admin.service.IUserService;
 import com.hsp.base.controller.BaseController;
 import com.hsp.core.PageHelper;
+import com.hsp.core.ZtreeNode;
 @Controller
 @RequestMapping(value="/admin/")
 public class UserController extends BaseController{
@@ -123,9 +124,10 @@ public class UserController extends BaseController{
 	 * @param response
 	 */
 	@RequestMapping(value="/permission/data",method=RequestMethod.POST)
-	@RequiresRoles("super")
+    @RequiresRoles("super")
 	public void getPermissionData(HttpServletRequest request,HttpServletResponse response){
-		
+		List<ZtreeNode> tree=roleService.getRolePermissionGroup();
+		writeJsonData(response, tree);
 	}
 	
 }

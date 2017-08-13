@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.hsp.admin.mapper.RolePermissionMapper" >
-  <resultMap id="BaseResultMap" type="com.hsp.admin.pojo.RolePermission" >
+<mapper namespace="com.hsp.admin.mapper.RolePermissionLinkMapper" >
+  <resultMap id="BaseResultMap" type="com.hsp.admin.pojo.RolePermissionLink" >
     <result column="role_id" property="roleId" jdbcType="INTEGER" />
     <result column="pid" property="pid" jdbcType="INTEGER" />
   </resultMap>
@@ -16,6 +16,15 @@
   		#{pId}
   	)
   </insert>
+  
+  <!-- <select id="getRolePermissionGroup" resultType="RoleVO">
+		SELECT
+			r.*, p.*
+		FROM
+			role_permission rp
+		LEFT JOIN role r ON r.role_id = rp.role_id
+		LEFT JOIN permission p ON p.p_id = rp.p_id
+  </select> -->
   
   <delete id="unbindPermission" parameterType="RolePermissionLink">
   	DELETE FROM role_permission WHERE role_id=#{roleId} AND p_id=#{pId}
