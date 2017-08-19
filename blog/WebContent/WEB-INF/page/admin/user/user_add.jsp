@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,20 +13,41 @@
 .article-w{
 	width:200px;
 }
+.content{
+	width:80%;
+	height:auto;
+	margin-left:25%;
+	margin-top:20px;
+}
+.layui-input-block select{
+	width:200px;
+}
 </style>
 <body>
-	<div style="margin: 15px;">
-		<!-- <span class="layui-breadcrumb">
-		  <a href="/">首页</a>
-		  <a href="/demo/">内容管理</a>
-		  <a><cite>文章管理</cite></a>
-		</span> -->
-
+	<div class="content">
 	<form class="layui-form" action="/admin/article/add" method="POST">
 				<div class="layui-form-item">
 					<label class="layui-form-label">用户名</label>
 					<div class="layui-input-block">
 						<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">初始密码</label>
+					<div class="layui-input-block">
+						<input type="password" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
+					</div>
+				</div>
+				
+				<div class="layui-form-item">
+					<label class="layui-form-label">角色</label>
+					<div class="layui-input-block" >
+						<select name="role">
+							<option value="">请选择角色</option>
+							<c:forEach items="${roleList }" var="role">
+								<option value="${role.roleId }">${role.description }</option>
+							</c:forEach>
+						</select>
 					</div>
 				</div>
 				
@@ -51,7 +73,7 @@
 <script src="<%=request.getContextPath()%>/asserts/js/jquery.ztree.excheck-3.5.min.js"></script>
 <script src="<%=request.getContextPath()%>/asserts/js/jquery.ztree.exedit-3.5.min.js"></script>
 <script src="<%=request.getContextPath()%>/asserts/js/jquery.ztree.exhide-3.5.min.js"></script>
-<script src="<%=request.getContextPath()%>/asserts/admin/user/add.js"></script>
+<script src="<%=request.getContextPath()%>/asserts/admin/user/user_add.js"></script>
 <script type="text/javascript">
 	layui.use(['form', 'layedit', 'laydate'], function() {
 		var form = layui.form(),

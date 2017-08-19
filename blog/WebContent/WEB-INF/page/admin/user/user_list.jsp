@@ -55,5 +55,5 @@
 	</script>
 </body>
 <%@include file="../common/BaseScript.jsp"%>
-<script src="<%=request.getContextPath() %>/asserts/admin/user/list.js"></script>
+<script src="<%=request.getContextPath() %>/asserts/admin/user/user_list.js"></script>
 </html>

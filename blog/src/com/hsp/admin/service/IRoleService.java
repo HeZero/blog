@@ -3,6 +3,7 @@ package com.hsp.admin.service;
 import java.util.List;
 
 import com.hsp.admin.pojo.Role;
+import com.hsp.core.HMap;
 import com.hsp.core.PageHelper;
 import com.hsp.core.ZtreeNode;
 
@@ -45,4 +46,10 @@ public interface IRoleService {
 	  * @return
 	  */
 	 List<ZtreeNode> getRolePermissionGroup();
+	 /**
+	  * 查询角色
+	  * @param params
+	  * @return
+	  */
+	 List<Role> getRoleListByParams(HMap params);
 }

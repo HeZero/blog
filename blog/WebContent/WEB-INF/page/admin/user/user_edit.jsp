@@ -1,54 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>文章管理</title>
 <%@include file="../common/BaseStyle.jsp" %>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/asserts/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/asserts/css/zTreeStyle.css">
 </head>
 <style>
 .article-w{
-	width:300px;
+	width:200px;
+}
+.content{
+	width:80%;
+	height:auto;
+	margin-left:25%;
+	margin-top:20px;
+}
+.layui-input-block select{
+	width:200px;
 }
 </style>
 <body>
-<div class="container">
-	<div class="conent"></div>
+	<div class="content">
 	<form class="layui-form" action="/admin/article/add" method="POST">
 				<div class="layui-form-item">
-					<label class="layui-form-label">文章标题</label>
+					<label class="layui-form-label">用户名</label>
 					<div class="layui-input-block">
 						<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
 					</div>
 				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">初始密码</label>
+					<div class="layui-input-block">
+						<input type="password" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
+					</div>
+				</div>
 				
 				<div class="layui-form-item">
-					<label class="layui-form-label">文章分类</label>
-					<div class="layui-input-block">
-						<input type="checkbox" name="articleType" value="0" title="web前端">
-						<input type="checkbox" name="articleType" value="1" title="java" checked="">
-						<input type="checkbox" name="articleType" value="2" title="大数据">
+					<label class="layui-form-label">角色</label>
+					<div class="layui-input-block" >
+						<select name="role">
+							<option value="">请选择角色</option>
+							<c:forEach items="${roleList }" var="role">
+								<option value="${role.roleId }">${role.description }</option>
+							</c:forEach>
+						</select>
 					</div>
 				</div>
 				
-				<div class="layui-form-item layui-form-text">
-					<label class="layui-form-label">文章内容</label>
+				<div class="layui-form-item">
+					<label class="layui-form-label">权限设置</label>
 					<div class="layui-input-block">
-						<textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
+						<ul class="ztree" id="demo"></ul>
 					</div>
 				</div>
-				<div class="layui-form-item" style="padding-left:20%;">
+				
+				<div class="layui-form-item">
 					<div class="layui-input-block">
 						<button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
 						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 					</div>
 				</div>
 			</form>	
-	</div>
+		</div>
 </body>
 <%@include file="../common/BaseScript.jsp" %>
+<script src="<%=request.getContextPath()%>/asserts/js/jquery.ztree.all-3.5.min.js"></script>
+<script src="<%=request.getContextPath()%>/asserts/js/jquery.ztree.core-3.5.min.js"></script>
+<script src="<%=request.getContextPath()%>/asserts/js/jquery.ztree.excheck-3.5.min.js"></script>
+<script src="<%=request.getContextPath()%>/asserts/js/jquery.ztree.exedit-3.5.min.js"></script>
+<script src="<%=request.getContextPath()%>/asserts/js/jquery.ztree.exhide-3.5.min.js"></script>
+<script src="<%=request.getContextPath()%>/asserts/admin/user/add.js"></script>
 <script type="text/javascript">
 	layui.use(['form', 'layedit', 'laydate'], function() {
 		var form = layui.form(),

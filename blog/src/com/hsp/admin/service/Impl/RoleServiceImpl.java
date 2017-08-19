@@ -82,4 +82,10 @@ public class RoleServiceImpl implements IRoleService{
 		return ztree;
 	}
 
+	@Override
+	public List<Role> getRoleListByParams(HMap params) {
+		// TODO Auto-generated method stub
+		return roleMapper.getRoleListByParams(params);
+	}
+
 }
