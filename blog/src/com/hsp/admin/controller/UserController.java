@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hsp.admin.pojo.Authc;
+import com.hsp.admin.pojo.Permission;
 import com.hsp.admin.pojo.Role;
 import com.hsp.admin.pojo.User;
 import com.hsp.admin.service.IAuthcManager;
+import com.hsp.admin.service.IPermissionService;
 import com.hsp.admin.service.IRoleService;
 import com.hsp.admin.service.IUserService;
 import com.hsp.base.controller.BaseController;
@@ -35,6 +37,9 @@ public class UserController extends BaseController{
 	
 	@Autowired
 	IAuthcManager authcManager;
+	
+	@Autowired
+	IPermissionService permissionService;
 	
 	/**
 	 * 跳转用户查询
@@ -154,7 +159,7 @@ public class UserController extends BaseController{
 		}
 	}
 	/**
-	 * 跳转平台开发权限列表
+	 * 跳转安全配置
 	 * @param request
 	 * @param response
 	 */
@@ -165,7 +170,7 @@ public class UserController extends BaseController{
 	}
 	
 	/**
-	 * 获取权限数据
+	 * 获取安全配置数据
 	 * @param request
 	 * @param response
 	 */
@@ -177,7 +182,7 @@ public class UserController extends BaseController{
 		writeJsonData(response, page.getMapData());
 	}
 	/**
-	 * 跳转添加shiro权限配置
+	 * 跳转添加shiro安全配置
 	 * @param request
 	 * @param response
 	 * @return
@@ -188,7 +193,7 @@ public class UserController extends BaseController{
 		return "/admin/user/authc_add";
 	}
 	/**
-	 * 添加shiro权限配置
+	 * 添加shiro安全配置
 	 * @param request
 	 * @param response
 	 * @param config
@@ -218,6 +223,57 @@ public class UserController extends BaseController{
 		List<ZtreeNode> tree=roleService.getRolePermissionGroup();
 		writeJsonData(response, tree);
 	}
-	
-	
+	/**
+	 * 跳转权限列表
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value="/permission/list",method=RequestMethod.GET)
+	@RequiresRoles("super")
+	public String toPermission(HttpServletRequest request,HttpServletResponse response){
+		return "/admin/user/permission_list";
+	}
+	/**
+	 * 获取权限列表数据
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value="/permission/pagination",method=RequestMethod.POST)
+	@RequiresRoles("super")
+	public void getPermissionPagination(HttpServletRequest request,HttpServletResponse response){
+		PageHelper<Permission> page=new PageHelper<>(request);
+		permissionService.selectPermissionPagination(page);
+		writeJsonData(response, page.getMapData());
+	}
+	/**
+	 * 跳转新增权限
+	 * @param request
+	 * @param reponse
+	 * @return
+	 */
+	@RequestMapping(value="/permission/add",method=RequestMethod.GET)
+	@RequiresRoles("super")
+	public String toAddPermission(HttpServletRequest request,HttpServletResponse reponse){
+		return "/admin/user/permission_add";
+	}
+	/**
+	 * 新增权限
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value="/permission/add",method=RequestMethod.POST)
+	@RequiresRoles("super")
+	public void addPermission(HttpServletRequest request,HttpServletResponse response,@ModelAttribute("permission")Permission permission){
+		HMap result=new HMap();
+		try {
+			permissionService.addPermission(permission);
+			result.put("msg", "success");
+		} catch (Exception e) {
+			result.put("msg", "failed");
+			e.printStackTrace();
+		}finally{
+			writeJsonData(response, result);
+		}
+	}
 }

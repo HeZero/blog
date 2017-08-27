@@ -25,11 +25,18 @@
 </style>
 <body>
 	<div class="content">
-	<form class="layui-form" action="/admin/article/add" method="POST">
+	<form class="layui-form" action="/admin/role/add" method="POST">
 				<div class="layui-form-item">
 					<label class="layui-form-label">角色名</label>
 					<div class="layui-input-block">
-						<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
+						<input type="text" name="roleName" lay-verify="title" autocomplete="off" placeholder="请输入角色名" class="layui-input article-w">
+					</div>
+				</div>
+				
+				<div class="layui-form-item">
+					<label class="layui-form-label">角色描述</label>
+					<div class="layui-input-block">
+						<input type="text" name="desciption" lay-verify="title" autocomplete="off" placeholder="请输入内容" class="layui-input article-w">
 					</div>
 				</div>
 				
@@ -39,7 +46,7 @@
 						<ul class="ztree" id="demo"></ul>
 					</div>
 				</div>
-				
+				<input type="hidden" name="permission" value="">
 				<div class="layui-form-item">
 					<div class="layui-input-block">
 						<button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
