@@ -45,7 +45,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public void addValueInfo(User t) {
-		// TODO Auto-generated method stub
+		userMapper.addUser(t);
 		
 	}
 

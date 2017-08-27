@@ -97,7 +97,7 @@ public class PropertiesReader {
 	public static void main(String[] args){
 		String value=null;
 		try {
-			value = PropertiesReader.getProperty("test", "name");
+			value = PropertiesReader.getProperty("db", "driverClassName");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

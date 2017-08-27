@@ -22,39 +22,38 @@
 .layui-input-block select{
 	width:200px;
 }
+.layui-input, .layui-textarea{
+	width:200px;
+}
+.layui-form-select{
+	width:200px;
+}
 </style>
 <body>
 	<div class="content">
-	<form class="layui-form" action="/admin/article/add" method="POST">
+	<form class="layui-form" action="/admin/user/add" method="POST">
 				<div class="layui-form-item">
 					<label class="layui-form-label">用户名</label>
 					<div class="layui-input-block">
-						<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
+						<input type="text" name="username" lay-verify="title" autocomplete="off" placeholder="请输入用户名" class="layui-input article-w">
 					</div>
 				</div>
 				<div class="layui-form-item">
 					<label class="layui-form-label">初始密码</label>
 					<div class="layui-input-block">
-						<input type="password" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
+						<input type="password" name="password" lay-verify="title" autocomplete="off" placeholder="请输入密码" class="layui-input article-w">
 					</div>
 				</div>
 				
 				<div class="layui-form-item">
 					<label class="layui-form-label">角色</label>
 					<div class="layui-input-block" >
-						<select name="role">
-							<option value="">请选择角色</option>
+						<select name="roleId" style="width:200px;padding-right:50px;">
+							<option class="article-w" value="">请选择角色</option>
 							<c:forEach items="${roleList }" var="role">
-								<option value="${role.roleId }">${role.description }</option>
+								<option style="width:200px;" value="${role.roleId }">${role.description }</option>
 							</c:forEach>
 						</select>
-					</div>
-				</div>
-				
-				<div class="layui-form-item">
-					<label class="layui-form-label">权限设置</label>
-					<div class="layui-input-block">
-						<ul class="ztree" id="demo"></ul>
 					</div>
 				</div>
 				

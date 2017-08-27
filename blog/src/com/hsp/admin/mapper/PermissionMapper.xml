@@ -11,7 +11,7 @@
 		<result column="create_time" property="createTime" jdbcType="VARCHAR" />
 	</resultMap>
 
-	<insert id="addPermission" parameterType="Permission">
+	<insert id="addPermission" parameterType="Permission" useGeneratedKeys="true" keyProperty="pId">
 		INSERT INTO permission(
 		name,
 		url,

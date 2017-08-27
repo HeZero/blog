@@ -55,7 +55,7 @@
 <script src="<%=request.getContextPath()%>/asserts/js/jquery.ztree.excheck-3.5.min.js"></script>
 <script src="<%=request.getContextPath()%>/asserts/js/jquery.ztree.exedit-3.5.min.js"></script>
 <script src="<%=request.getContextPath()%>/asserts/js/jquery.ztree.exhide-3.5.min.js"></script>
-<script src="<%=request.getContextPath()%>/asserts/admin/user/role_add.js"></script>
+<script src="<%=request.getContextPath()%>/asserts/admin/user/user_add.js"></script>
 <script type="text/javascript">
 	layui.use(['form', 'layedit', 'laydate'], function() {
 		var form = layui.form(),

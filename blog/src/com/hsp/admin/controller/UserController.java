@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hsp.admin.pojo.Authc;
 import com.hsp.admin.pojo.Role;
@@ -82,10 +83,12 @@ public class UserController extends BaseController{
 	 */
 	@RequestMapping(value="/user/add",method=RequestMethod.POST)
 	@RequiresRoles("super")
-	public void addUser(HttpServletRequest request,HttpServletResponse response,@ModelAttribute("user")User user){
+	public void addUser(HttpServletRequest request,HttpServletResponse response,@ModelAttribute("user")User user,@RequestParam("roleId")String roleId){
 		HMap result=new HMap();
 		try {
+			//TO DO
 			userService.addValueInfo(user);
+			userService.bindRoles(user.getUserId(), roleId);
 			result.put("msg", "success");
 		} catch (Exception e) {
 			result.put("msg", "failed");
@@ -179,7 +182,7 @@ public class UserController extends BaseController{
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping(value="/authc/pagination",method=RequestMethod.GET)
+	@RequestMapping(value="/authc/add",method=RequestMethod.GET)
 	@RequiresRoles("super")
 	public String toAddAuthc(HttpServletRequest request,HttpServletResponse response){
 		return "/admin/user/authc_add";
@@ -190,7 +193,7 @@ public class UserController extends BaseController{
 	 * @param response
 	 * @param config
 	 */
-	@RequestMapping(value="/authc/pagination",method=RequestMethod.POST)
+	@RequestMapping(value="/authc/add",method=RequestMethod.POST)
 	@RequiresRoles("super")
 	public void addAuthc(HttpServletRequest request,HttpServletResponse response,@ModelAttribute("authc")Authc config){
 		HMap result=new HMap();

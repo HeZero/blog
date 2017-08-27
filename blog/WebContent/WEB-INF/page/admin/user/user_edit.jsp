@@ -25,20 +25,7 @@
 </style>
 <body>
 	<div class="content">
-	<form class="layui-form" action="/admin/article/add" method="POST">
-				<div class="layui-form-item">
-					<label class="layui-form-label">用户名</label>
-					<div class="layui-input-block">
-						<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">初始密码</label>
-					<div class="layui-input-block">
-						<input type="password" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input article-w">
-					</div>
-				</div>
-				
+	<form class="layui-form" action="/admin/user/edit" method="POST">
 				<div class="layui-form-item">
 					<label class="layui-form-label">角色</label>
 					<div class="layui-input-block" >
@@ -60,8 +47,7 @@
 				
 				<div class="layui-form-item">
 					<div class="layui-input-block">
-						<button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+						<button class="layui-btn" lay-submit="" lay-filter="demo1">确定</button>
 					</div>
 				</div>
 			</form>	

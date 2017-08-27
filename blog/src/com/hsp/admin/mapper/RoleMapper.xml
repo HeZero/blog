@@ -19,8 +19,8 @@
   		user_id
   	)
   	VALUES
-  	<foreach collection="list" item="item">
-  	#{item.roleId},#{item.userId}
+  	<foreach collection="list" item="item" separator=",">
+  	(#{item.roleId},#{item.userId})
   	</foreach>
   </insert>
   

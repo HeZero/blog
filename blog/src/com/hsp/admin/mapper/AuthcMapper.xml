@@ -22,7 +22,7 @@
   		AND create_time=#{createTime}
   	</if>
   </sql>
-  <insert id="addAuthc" parameterType="Authc">
+  <insert id="addAuthc" parameterType="Authc" useGeneratedKeys="true" keyProperty="authcId">
   	INSERT INTO authc (
   		chain,
   		defenition,
