@@ -1,5 +1,8 @@
 package com.hsp.admin.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -92,6 +95,10 @@ public class LoginController extends BaseController{
 				}
 				currentUser.login(token);
 			}
+			//记录登录时间
+			User upUser=userService.getUserByUsername(user.getUsername());
+			upUser.setLastLoginTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+			userService.updateValueInfo(upUser);
 		} catch (AuthenticationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

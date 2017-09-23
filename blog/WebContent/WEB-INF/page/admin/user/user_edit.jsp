@@ -43,6 +43,7 @@
 					<div class="layui-input-block">
 						<ul class="ztree" id="demo"></ul>
 					</div>
+					<input type="hidden" id="permission" name="permission" value=""/>
 				</div>
 				
 				<div class="layui-form-item">
@@ -59,7 +60,7 @@
 <script src="<%=request.getContextPath()%>/asserts/js/jquery.ztree.excheck-3.5.min.js"></script>
 <script src="<%=request.getContextPath()%>/asserts/js/jquery.ztree.exedit-3.5.min.js"></script>
 <script src="<%=request.getContextPath()%>/asserts/js/jquery.ztree.exhide-3.5.min.js"></script>
-<script src="<%=request.getContextPath()%>/asserts/admin/user/add.js"></script>
+<script src="<%=request.getContextPath()%>/asserts/admin/user/user_edit.js"></script>
 <script type="text/javascript">
 	layui.use(['form', 'layedit', 'laydate'], function() {
 		var form = layui.form(),
@@ -84,10 +85,17 @@
 	
 		//监听提交
 		form.on('submit(demo1)', function(data) {
+			var zTree = $.fn.zTree.getZTreeObj("demo");
+			var nodes=zTree.getCheckedNodes(true);
+			var str="";
+			for(var i=0;i<nodes.length;i++){
+				str+=nodes[i].id+",";
+			}
+			$("#permission").val(str);
 			layer.alert(JSON.stringify(data.field), {
-				title: '最终的提交信息'
+				title: str
 			})
-			//return false;
+			return false;
 		});
 	});
 </script>

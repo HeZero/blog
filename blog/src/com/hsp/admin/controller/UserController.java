@@ -9,6 +9,7 @@ import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -101,6 +102,18 @@ public class UserController extends BaseController{
 		}finally{
 			writeJsonData(response, result);
 		}
+	}
+	/**
+	 * 角色授权
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value="/user/edit/{userId}",method=RequestMethod.GET)
+	public String toUserEdit(@PathVariable("userId")String userId,HttpServletRequest request,HttpServletResponse response){
+		User user=userService.getValueById(userId);
+		request.setAttribute("user", user);
+		return "admin/user/user_edit";
 	}
 	/**
 	 * 跳转角色列表

@@ -47,7 +47,7 @@
 				<td>{{ item.status=='1'?'正常':'冻结'}}</td>
 				<td>{{ item.lastLoginTime }}</td>
 				<td>
-					<a href="/admin/message/edit/{{item.messageId}}" class="layui-btn layui-btn-mini">授权</a>
+					<a id="Authorization" href="#" onclick='authorization({{item.userId}})' class="layui-btn layui-btn-mini">授权</a>
 					<a href="/admin/message/edit/{{item.messageId}}" class="layui-btn layui-btn-mini">{{item.status=='1'?'冻结':'解除冻结'}}</a>
 					<a href="/admin/message/delete/{{item.messageId}}" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a>
 				</td>

@@ -9,5 +9,8 @@ $(document).ready(function() {
 	});
 	$("#search").click(function(){
 		getData(url,$("#form").serialize());
-	})
+	});
 })
+function authorization(userId){
+		open('用户授权','/admin/user/edit/'+userId);
+	}
