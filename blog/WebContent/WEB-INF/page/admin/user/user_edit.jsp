@@ -26,17 +26,6 @@
 <body>
 	<div class="content">
 	<form class="layui-form" action="/admin/user/edit" method="POST">
-				<div class="layui-form-item">
-					<label class="layui-form-label">角色</label>
-					<div class="layui-input-block" >
-						<select name="role">
-							<option value="">请选择角色</option>
-							<c:forEach items="${roleList }" var="role">
-								<option value="${role.roleId }">${role.description }</option>
-							</c:forEach>
-						</select>
-					</div>
-				</div>
 				
 				<div class="layui-form-item">
 					<label class="layui-form-label">权限设置</label>

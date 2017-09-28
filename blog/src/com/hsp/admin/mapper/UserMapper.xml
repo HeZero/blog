@@ -14,6 +14,8 @@
     <result column="address_city" property="addressCity" jdbcType="VARCHAR" />
     <result column="head_imgurl" property="headImgurl" jdbcType="VARCHAR" />
     <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="is_use" property="isUse" jdbcType="VARCHAR" />
   </resultMap>
   
   <insert id="addUser" parameterType="User" useGeneratedKeys="true" keyProperty="userId">
@@ -28,7 +30,9 @@
    		address_province,
    		address_city,
    		head_imgurl,
-   		introduction
+   		introduction,
+   		status,
+   		is_use
    )VALUES(
    		#{username,jdbcType=VARCHAR},
    		#{password,jdbcType=VARCHAR},
@@ -40,17 +44,19 @@
    		#{addressProvince,jdbcType=VARCHAR},
    		#{addressCity,jdbcType=VARCHAR},
    		#{headImgurl,jdbcType=VARCHAR},
-   		#{introduction,jdbcType=VARCHAR}
+   		#{introduction,jdbcType=VARCHAR},
+   		#{status,jdbcType=VARCHAR},
+   		#{isUse,jdbcType=VARCHAR}
    ) 
   </insert>
   
   <select id="getUserListByParams" parameterType="com.hsp.core.HMap" resultMap="BaseResultMap">
-  	SELECT * FROM user WHERE 1=1
+  	SELECT * FROM user WHERE is_use='1'
   		<if test="userId !=null">
   			AND user_id=#{userId,jdbcType=INTEGER}
   		</if>
   		<if test="username !=null">
-  			AND username=#{username,jdbcType=VARCHAR}
+  			AND username like CONCAT('%',#{username,jdbcType=VARCHAR},'%')
   		</if>
   		<if test="password !=null">
   			AND password=#{password,jdbcType=VARCHAR}
@@ -75,6 +81,9 @@
   		</if>
   		<if test="addressCity !=null">
   			AND address_city=#{addressCity,jdbcType=VARCHAR}
+  		</if>
+  		<if test="status !=null">
+  			AND status=#{status,jdbcType=VARCHAR}
   		</if>
   		<if test="sort !=null and order != null">
   			ORDER BY #{sort} #{order}
@@ -85,12 +94,12 @@
   </select>
   
   <select id="getUserListCountByParams" parameterType="com.hsp.core.HMap" resultType="Integer">
-  		SELECT COUNT(user_id) FROM user WHERE 1=1
+  		SELECT COUNT(user_id) FROM user WHERE is_use='1'
   		<if test="userId !=null">
   			AND user_id=#{userId,jdbcType=INTEGER}
   		</if>
   		<if test="username !=null">
-  			AND username=#{username,jdbcType=VARCHAR}
+  			AND username like CONCAT('%',#{username,jdbcType=VARCHAR},'%')
   		</if>
   		<if test="password !=null">
   			AND password=#{password,jdbcType=VARCHAR}
@@ -115,6 +124,9 @@
   		</if>
   		<if test="addressCity !=null">
   			AND address_city=#{addressCity,jdbcType=VARCHAR}
+  		</if>
+  		<if test="status !=null">
+  			AND status=#{status,jdbcType=VARCHAR}
   		</if>
   </select>
   
@@ -148,7 +160,32 @@
 		  		<if test="addressCity !=null">
 		  			 address_city=#{addressCity,jdbcType=VARCHAR},
 		  		</if>
+		  		<if test="status !=null">
+		  			 status=#{status,jdbcType=VARCHAR},
+		  		</if>
+		  		<if test="isUse !=null">
+		  			 is_use=#{isUse,jdbcType=VARCHAR}
+		  		</if>
   			</trim>
   			WHERE user_id=#{userId}
   </update>
+  
+  <insert id="bindRole" parameterType="java.util.Map">
+  	INSERT INTO user_role(
+  		role_id,
+  		user_id
+  	)
+  	VALUES(
+  		#{roleId,jdbcType=VARCHAR},
+  		#{userId,jdbcType=VARCHAR}
+  	)
+  </insert>
+  
+  <delete id="unbindRole" parameterType="java.util.Map">
+  		DELETE FROM user_role WHERE user_id=#{userId,jdbcType=VARCHAR} AND role_id=#{roleId,jdbcType=VARCHAR}
+  </delete>
+  
+  <delete id="unbindRoleById" parameterType="String">
+  		DELETE FROM user_role WHERE user_id=#{userId,jdbcType=VARCHAR}
+  </delete>
 </mapper>

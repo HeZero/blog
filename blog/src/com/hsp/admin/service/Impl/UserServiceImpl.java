@@ -1,8 +1,9 @@
 package com.hsp.admin.service.Impl;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,8 @@ import com.hsp.admin.mapper.RoleMapper;
 import com.hsp.admin.mapper.UserMapper;
 import com.hsp.admin.pojo.Role;
 import com.hsp.admin.pojo.User;
-import com.hsp.admin.pojo.UserRoleLink;
 import com.hsp.admin.service.IUserService;
+import com.hsp.base.enums.BaseStatus;
 import com.hsp.core.HMap;
 import com.hsp.core.PageHelper;
 
@@ -33,8 +34,14 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public User getValueById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		HMap params=new HMap();
+		params.put("userId", id);
+		List<User> userList= userMapper.getUserListByParams(params);
+		if(userList!=null&&userList.size()>0){
+			return userList.get(0);
+		}else{
+			return null;
+		}
 	}
 
 	@Override
@@ -51,14 +58,15 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public void deleteValueById(String id) {
-		// TODO Auto-generated method stub
-		
+		User user=this.getValueById(id);
+		user.setIsUse(BaseStatus.NO);
+		userMapper.updateUser(user);
+		userMapper.unbindRoleById(user.getUserId());
 	}
 
 	@Override
 	public int getValueCountByParams(HMap params) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userMapper.getUserListCountByParams(params);
 	}
 
 	@Override
@@ -76,22 +84,29 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public void bindRoles(String userId, String roleIds) {
 		if(roleIds!=null){
-			List<UserRoleLink> list=new ArrayList<>();
-			String[] Ids=roleIds.split(",");
-			for(int i=0;i<Ids.length;i++){
-				UserRoleLink link=new UserRoleLink();
-				link.setUserId(userId);
-				link.setRoleId(Ids[i]);
-				list.add(link);
+			Map<String,String> params=new HashMap<String,String>();
+			params.put("userId", userId);
+			String[] ids=roleIds.split(",");
+			for(String id:ids){
+				params.put("roleId", id);
+				userMapper.bindRole(params);
+				params.remove("roleId");
 			}
-			roleMapper.bindRoles(list);
 		}
 	}
 
 	@Override
 	public void unbindRoles(String userId, String roleIds) {
-		// TODO Auto-generated method stub
-		
+		if(roleIds!=null){
+			Map<String,String> params=new HashMap<String,String>();
+			params.put("userId", userId);
+			String[] ids=roleIds.split(",");
+			for(String id:ids){
+				params.put("roleId", id);
+				userMapper.unbindRole(params);
+				params.remove("roleId");
+			}
+		}
 	}
 
 	@Override
@@ -114,14 +129,15 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public List<User> getUserListByParams(HMap params) {
-		
 		return userMapper.getUserListByParams(params);
 	}
 
 	@Override
 	public void selectValueInfoPagination(PageHelper page) {
-		// TODO Auto-generated method stub
-		
+		page.generatePaginationParam();
+		HMap params=page.getParams();
+		page.setList(userMapper.getUserListByParams(params));
+		page.setConut(userMapper.getUserListCountByParams(params));
 	}
 
 }

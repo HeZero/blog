@@ -27,6 +27,17 @@ public class User {
 	private String introduction;
 	
 	private String status;
+	
+	private String isUse;
+	
+
+	public String getIsUse() {
+		return isUse;
+	}
+
+	public void setIsUse(String isUse) {
+		this.isUse = isUse;
+	}
 
 	public String getUserId() {
 		return userId;

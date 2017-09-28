@@ -7,23 +7,7 @@
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="VARCHAR" />
   </resultMap>
-  
-  <resultMap type="com.hsp.admin.pojo.UserRoleLink" id="UserRoleLink">
-	  <result column="role_id" property="roleId" jdbcType="INTEGER"/>
-	  <result column="user_id" property="userId" jdbcType="INTEGER"/>
-  </resultMap>
-  
-  <insert id="bindRoles" parameterType="UserRoleLink">
-  	INSERT INTO user_role(
-  		role_id,
-  		user_id
-  	)
-  	VALUES
-  	<foreach collection="list" item="item" separator=",">
-  	(#{item.roleId},#{item.userId})
-  	</foreach>
-  </insert>
-  
+    
   <select id="getRoleListByParams" parameterType="com.hsp.core.HMap" resultMap="Role">
   	SELECT * FROM role WHERE 1=1
   	<if test="roleId != null">
@@ -68,4 +52,23 @@
   	(SELECT role_id FROM user_role WHERE user_id IN
   	(SELECT user_id FROM `user` WHERE username=#{username}) )
   </select>
+  
+   <insert id="bindPermission" parameterType="java.util.Map">
+  	INSERT INTO role_permission(
+  		role_id,
+  		p_id
+  	)
+  	VALUES(
+  		#{roleId},
+  		#{pId}
+  	)
+  </insert>
+  
+  <delete id="unbindPermission" parameterType="java.util.Map">
+  	DELETE FROM role_permission WHERE role_id=#{roleId} AND p_id=#{pId}
+  </delete>
+  
+  <delete id="unbindPermissionById" parameterType="String">
+  	DELETE FROM role_permission WHERE role_id=#{roleId}
+  </delete>
 </mapper>

@@ -15,7 +15,7 @@ public class HMap extends HashMap {
 	 * 自动将页面数据放入PageData对象中,当从页面获取数据时 new的时候要传request
 	 * request.getParameter(arg0): get(arg0)或getString(arg0)
 	 * request.getParameterValues(arg0): getValues(arg0)方法
-	 * 本类也可以当做一个普通的Map使用，new的时候不要传参数 author：liuqf5
+	 * 本类也可以当做一个普通的Map使用，new的时候不要传参数 
 	 */
 	private static final long serialVersionUID = 1L;
 	Map map = null;

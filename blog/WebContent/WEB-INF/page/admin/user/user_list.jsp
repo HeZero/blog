@@ -44,12 +44,12 @@
 				<td>{{ item.username }}</td>
 				<td>{{ item.cardNumber }}</td>
 				<td>{{ item.createTime }}</td>
-				<td>{{ item.status=='1'?'正常':'冻结'}}</td>
+				<td>{{ item.status=='0'?'正常':'冻结'}}</td>
 				<td>{{ item.lastLoginTime }}</td>
 				<td>
 					<a id="Authorization" href="#" onclick='authorization({{item.userId}})' class="layui-btn layui-btn-mini">授权</a>
-					<a href="/admin/message/edit/{{item.messageId}}" class="layui-btn layui-btn-mini">{{item.status=='1'?'冻结':'解除冻结'}}</a>
-					<a href="/admin/message/delete/{{item.messageId}}" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a>
+					<a  href="#" onclick="freezeUser({{item.userId}},{{item.status}})" class="layui-btn layui-btn-mini">{{item.status=='0'?'冻结':'解除冻结'}}</a>
+					<a  href="#" onclick="deleteUser({{item.userId}})" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a>
 				</td>
 			</tr>
 			{{# }); }}

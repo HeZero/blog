@@ -1,9 +1,9 @@
 package com.hsp.admin.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.hsp.admin.pojo.Role;
-import com.hsp.admin.pojo.UserRoleLink;
 import com.hsp.core.HMap;
 
 public interface RoleMapper {
@@ -21,11 +21,6 @@ public interface RoleMapper {
 	 */
 	List<Role> getRoleListByUsername(String username);
 	/**
-	 * 绑定角色
-	 * @param linkList
-	 */
-	void bindRoles(List<UserRoleLink> linkList);
-	/**
 	 * 添加角色
 	 * @param role
 	 */
@@ -36,5 +31,20 @@ public interface RoleMapper {
 	 * @return
 	 */
 	int getRoleListCountByParams(HMap params);
+	/**
+	 * 绑定权限
+	 * @param params
+	 */
+	void bindPermission(Map<String, String> params);
+	/**
+	 * 解绑权限
+	 * @param params
+	 */
+	void unbindPermission(Map<String, String> params);
+	/**
+	 * 解绑角色所有权限
+	 * @param roleId
+	 */
+	void unbindPermissionById(String roleId);
 	
 }
